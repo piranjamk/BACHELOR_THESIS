@@ -2,11 +2,12 @@
 Prototype of unknown environment exploration robot
 
 ## ZDJĘCIA ROBOTA - prace nad pierwszą koncepcją
-![](https://github.com/piranjamk/BACHELOR_THESIS/blob/main/IMG/photo_v1_1.jpg = 100x100)
+![](https://github.com/piranjamk/BACHELOR_THESIS/blob/main/IMG/photo_v1_1.jpg?raw=true)
 
-![](https://github.com/piranjamk/BACHELOR_THESIS/blob/main/IMG/photo_v1_2.jpg?raw=true)
+![](https://github.com/piranjamk/BACHELOR_THESIS/blob/main/IMG/photo_v1_2.jpg?raw=true)  <br /> <br />
 
-## ZDJĘCIA ROBOTA - prace nad koncepcją alternatywną
+
+## ZDJĘCIA ROBOTA - prace nad koncepcją alternatywną (bez uporządkowania)
 ![](https://github.com/piranjamk/BACHELOR_THESIS/blob/main/IMG/photo_v2_01.jpg?raw=true)
 
 ![](https://github.com/piranjamk/BACHELOR_THESIS/blob/main/IMG/photo_v2_02.jpg?raw=true)
