@@ -1,0 +1,10 @@
+C:\Users\piran\Desktop\RobotControlApp\bin\Debug\RobotControlApp.exe.config
+C:\Users\piran\Desktop\RobotControlApp\bin\Debug\RobotControlApp.exe
+C:\Users\piran\Desktop\RobotControlApp\bin\Debug\RobotControlApp.pdb
+C:\Users\piran\Desktop\RobotControlApp\obj\Debug\RobotControlApp.Properties.Resources.resources
+C:\Users\piran\Desktop\RobotControlApp\obj\Debug\RobotControlApp.csproj.GenerateResource.cache
+C:\Users\piran\Desktop\RobotControlApp\obj\Debug\RobotControlApp.csproj.CoreCompileInputs.cache
+C:\Users\piran\Desktop\RobotControlApp\obj\Debug\RobotControlApp.exe
+C:\Users\piran\Desktop\RobotControlApp\obj\Debug\RobotControlApp.pdb
+C:\Users\piran\Desktop\RobotControlApp\obj\Debug\RobotControlApp.Form1.resources
+C:\Users\piran\Desktop\RobotControlApp\obj\Debug\RobotControlApp.csprojAssemblyReference.cache
