@@ -15,7 +15,7 @@ startup/%.o: ../startup/%.s
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU GCC Assembler'
 	@echo $(PWD)
-	arm-none-eabi-as -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -I"C:/Users/piran/workspace/AutonomousRobotProgram/HAL_Driver/Inc/Legacy" -I"C:/Users/piran/workspace/AutonomousRobotProgram/Utilities/STM32F1xx_Nucleo" -I"C:/Users/piran/workspace/AutonomousRobotProgram/inc" -I"C:/Users/piran/workspace/AutonomousRobotProgram/CMSIS/device" -I"C:/Users/piran/workspace/AutonomousRobotProgram/CMSIS/core" -I"C:/Users/piran/workspace/AutonomousRobotProgram/HAL_Driver/Inc" -g -o "$@" "$<"
+	arm-none-eabi-as -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -I"C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/HAL_Driver/Inc/Legacy" -I"C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/Utilities/STM32F1xx_Nucleo" -I"C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/inc" -I"C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/CMSIS/device" -I"C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/CMSIS/core" -I"C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/HAL_Driver/Inc" -g -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

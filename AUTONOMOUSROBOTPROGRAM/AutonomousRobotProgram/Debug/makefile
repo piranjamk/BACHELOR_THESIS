@@ -32,10 +32,10 @@ endif
 all: AutonomousRobotProgram.elf
 
 # Tool invocations
-AutonomousRobotProgram.elf: $(OBJS) $(USER_OBJS) C:\Users\piran\workspace\AutonomousRobotProgram/LinkerScript.ld
+AutonomousRobotProgram.elf: $(OBJS) $(USER_OBJS) C:\Users\piran\Desktop\PWSZajs\In¿ynierka\git\BACHELOR_THESIS\AUTONOMOUSROBOTPROGRAM\AutonomousRobotProgram/LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -u _printf_float -T"C:/Users/piran/workspace/AutonomousRobotProgram/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "AutonomousRobotProgram.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -u _printf_float -T"C:/Users/piran/Desktop/PWSZajs/In¿ynierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "AutonomousRobotProgram.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build

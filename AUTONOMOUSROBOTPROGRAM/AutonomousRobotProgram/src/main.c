@@ -79,15 +79,8 @@ int suma_przejechanych_odleglosci[4] = { 0, 0, 0, 0 };
 int wykryto_wyrwe_w_prawo = 0;
 
 void zmien_kolejnosc_kierunkow_w_prawo() {
-/*
-	int temp = kolejnosc_kierunkow[3];
-	for (int i = 1; i < 4; i++)
-		kolejnosc_kierunkow[i] = kolejnosc_kierunkow[i - 1];
-	kolejnosc_kierunkow[0] = temp;
-	*/
 	for (int i = 0; i < 4; i++)
 		kolejnosc_kierunkow[i] = (kolejnosc_kierunkow[i] + 1) %4;
-
 }
 
 void zmien_kolejnosc_kierunkow_w_lewo() {
@@ -259,15 +252,6 @@ int skrec_w_prawo() {
 		}
 	//dopisane 11 05 2021 o 15 -- END
 
-
-
-	/*
-	 while (abs(odleglosc_przod - dist_array[0]) > 3.5)
-	 {
-	 //printf("%.3f    %.3f    %d    \n", dist_array[0], dist_array[3], abs(odleglosc_przod - dist_array[0]));
-	 update_ultrasound_distances(dist_array);
-	 }
-	 */
 	HAL_TIM_PWM_Stop(&tim4, KANAL_SILNIKA_PRAWEGO);
 	HAL_TIM_PWM_Stop(&tim4, KANAL_SILNIKA_LEWEGO);
 	//zatrzymaj_silniki();
@@ -368,13 +352,6 @@ int podazaj_przod() {
 			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); // 200
 		}
 
-		printf("Przebyte odleglosci: N:%d  E:%d  S:%d  W:%d  \n\n",
-				suma_przejechanych_odleglosci[0],
-				suma_przejechanych_odleglosci[1],
-				suma_przejechanych_odleglosci[2],
-				suma_przejechanych_odleglosci[3]);
-		//HAL_Delay(2000);
-
 
 
 		update_ultrasound_distances(distances);
@@ -434,27 +411,7 @@ int skrec_w_lewo() {
 
 	HAL_Delay(600);
 	zatrzymaj_silniki();		//dopisane 	11 05 2021
-	/*update_ultrasound_distances(dist_array); //zakomentowane 13 06 2021
-	float distance = dist_array[0];
-	float previous_distance;
-	while (1) {
-		previous_distance = distance;
-		update_ultrasound_right_distance(dist_array);
-		distance = dist_array[0];
-		update_ultrasound_distances(dist_array);
-				float a = dist_array[0] + 2;
-				float b = dist_array[2];
-				float c = b - a;
-				int zwrot = 1;
-				if (c < 0) {
-					c = -c;
-					zwrot = -1;
-				}
-				float kat = atan(c / 17);
-		if (abs(previous_distance - distance) < 8
-				&& previous_distance < distance && kat * 180 / M_PI > 8)
-			break;
-	}*/
+
 	float distances[4];//dopisane 11 05 2021
 	while (1)//dopisane 	11 05 2021
 	{
@@ -486,17 +443,7 @@ int skrec_w_lewo() {
 	return stan_jade;
 }
 
-/*
- void skrec_w_prawo(){
- HAL_GPIO_WritePin(GPIOC, PIN_PRAWY, JAZDA_DO_TYLU);
- HAL_GPIO_WritePin(GPIOC, PIN_LEWY, JAZDA_DO_PRZODU);
- HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_LEWEGO);
- HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_PRAWEGO);
- HAL_Delay(CZAS_OBROTU_W_PRAWO);
- HAL_TIM_PWM_Stop(&tim4, KANAL_SILNIKA_PRAWEGO);
- HAL_TIM_PWM_Stop(&tim4, KANAL_SILNIKA_LEWEGO);
- }
- */
+
 void jedz_do_tylu() {
 	HAL_GPIO_WritePin(GPIOC, PIN_PRAWY, JAZDA_DO_TYLU);
 	HAL_GPIO_WritePin(GPIOC, PIN_LEWY, JAZDA_DO_TYLU);
@@ -558,16 +505,12 @@ void skoryguj_kurs() {
 void updatuj_dane() {
 	int obecny_kierunek = kolejnosc_kierunkow[0];
 	if (obecny_kierunek == polnoc) {
-		//plansza[pozycja_y][pozycja_x] = 'X';
 		pozycja_y -= 1;
 	} else if (obecny_kierunek == poludnie) {
-		//plansza[pozycja_y][pozycja_x] = 'X';
 		pozycja_y += 1;
 	} else if (obecny_kierunek == wschod) {
-		//plansza[pozycja_y][pozycja_x] = 'X';
 		pozycja_x += 1;
 	} else if (obecny_kierunek == zachod) {
-		//plansza[pozycja_y][pozycja_x] = 'X';
 		pozycja_x -= 1;
 	}
 }
@@ -648,12 +591,6 @@ void zdalnie_steruj(){
 			double accl_z = a_z;
 
 			roll = atan2(accl_y, accl_z);
-			/*
-			if (roll < 0)
-				roll = M_PI + roll;
-			else
-				roll = M_PI - roll;
-				*/
 			pitch = atan(-accl_x / (accl_y * sin(roll) + accl_z * cos(roll)));
 			//get angles - end
 
@@ -664,7 +601,7 @@ void zdalnie_steruj(){
 void automatycznie_steruj()
 {
 
-	int przejechana_ilosc_prosto_po_skrecie_w_prawo = 0; //trzeba przejechac minimum dwie dlugosci
+	int przejechana_ilosc_prosto_po_skrecie_w_prawo = 0; //trzeba przejechac minimum dwie dlugosci po luce skrecie
 
 	float distances[4];
 
@@ -689,24 +626,10 @@ void automatycznie_steruj()
 
 
 		operational_counter++;
-		//printf("Operation counter: %d  xstart:%d x:%d   ystart:%d y:%d\n", operational_counter, poczatkowa_pozycja_x, pozycja_x,		poczatkowa_popzycja_y, pozycja_y);
-		//printf("Test \n");
 
 		update_ultrasound_distances(distances);
 		//printf("Jade \n");
-/*
-		wyswietl_dane();
-		{
-				for (int i = 0; i < ROZMIAR_PLANSZY; i++) {
-					for (int j = 0; j < ROZMIAR_PLANSZY; j++){
-						printf("%c", plansza[i][j]);;
-					}
-					printf("\n");
-				}
-		}
-		printf("\n");
 
-*/
 		if (distances[2] < 50) {
 			int kierunek_obecny = kolejnosc_kierunkow[0];
 			if (kierunek_obecny == polnoc)
@@ -732,18 +655,8 @@ void automatycznie_steruj()
 
 
 
-		wyswietl_dane();
-		/*
-		if (operational_counter > 45) //tutaj to zmienic potem tego ifa dodanego na ostatku
-		{
-				for (int i = 0; i < ROZMIAR_PLANSZY; i++) {
-					for (int j = 0; j < ROZMIAR_PLANSZY; j++){
-						printf("%c", plansza[i][j]);;
-					}
-					printf("\n");
-				}
-		}
-      */
+
+
 		if (operational_counter > 4) {
 					if ( abs(poczatkowa_pozycja_x - pozycja_x) < 1  && abs(poczatkowa_popzycja_y - pozycja_y) < 1) {
 						HAL_Delay(10);
@@ -783,22 +696,7 @@ void automatycznie_steruj()
 
 		}
 
-/*
-				if (distances[2] > 50 && wykryto_wyrwe_w_prawo == 1) {
-					update_ultrasound_distances(distances);
-					if ((odleglosc_startowa - distances[3]) > 30) {
-						zatrzymaj_silniki();
 
-						update_ultrasound_distances(distances);	// 1-prawo 2-lewo 3-tyl 4-przod
-						int odleglosc_koncowa = abs(odleglosc_startowa - distances[3]); //abs dla bezpieczenstwa
-						int obecny_kierunek = kolejnosc_kierunkow[0];
-						suma_przejechanych_odleglosci[obecny_kierunek] +=
-								odleglosc_koncowa;
-
-						return stan_jade;
-					}
-				}
-*/
 		if (distances[3] > 25)
 			skoryguj_kurs();
 		if (distances[3] > 25)
@@ -810,7 +708,6 @@ void automatycznie_steruj()
 			if (distances[3] < 10)
 				jedz_do_tylu();
 			skrec_w_lewo();
-			//dopisac, ze jak skrecilismy w elwo to wykryta_wyrwa_w_prawo = 0;
 		}
 	}
 }
@@ -841,7 +738,6 @@ int main(void) {
 	//init_servo();
 	set_ultrasound_pins();
 	HAL_Delay(300);
-	///printf("safdsafdasf\n");
 	int i = 0;
 	uint8_t received_char;
 
