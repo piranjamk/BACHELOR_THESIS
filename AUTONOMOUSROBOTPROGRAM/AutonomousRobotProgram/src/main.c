@@ -657,7 +657,7 @@ void automatycznie_steruj()
 
 
 
-		if (operational_counter > 4) {
+		if ((operational_counter > 4) && (kolejnosc_kierunkow[0] == polnoc)) {
 					if ( abs(poczatkowa_pozycja_x - pozycja_x) < 1  && abs(poczatkowa_popzycja_y - pozycja_y) < 1) {
 						HAL_Delay(10);
 								{
@@ -694,6 +694,8 @@ void automatycznie_steruj()
 			zatrzymaj_silniki();
 			skrec_w_prawo();
 
+		} else if(distances[2] < 40){	//ochrona skretu
+			wykryto_wyrwe_w_prawo = 1;
 		}
 
 
