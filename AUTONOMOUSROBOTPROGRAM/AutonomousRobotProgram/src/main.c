@@ -512,7 +512,7 @@ void skrec_w_lewo_czasowo()
 		HAL_GPIO_WritePin(GPIOC, PIN_LEWY, JAZDA_DO_TYLU);
 		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_LEWEGO);
 		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_PRAWEGO);
-		HAL_Delay(600);
+		HAL_Delay(400);
 		zatrzymaj_silniki();		//dopisane 	11 05 2021
 
 }
@@ -527,7 +527,7 @@ void skrec_w_prawo_czasowo()
 		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_LEWEGO);
 		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_PRAWEGO);
 
-		HAL_Delay(600);
+		HAL_Delay(400);
 		zatrzymaj_silniki();
 }
 

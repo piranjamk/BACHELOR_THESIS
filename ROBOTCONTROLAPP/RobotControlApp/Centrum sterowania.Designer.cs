@@ -48,6 +48,7 @@
             this.tabControlMode = new System.Windows.Forms.TabControl();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
             this.textBoxMap = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,7 +57,12 @@
             this.tabPageRemote = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.buttonForward = new System.Windows.Forms.Button();
+            this.buttonReverse = new System.Windows.Forms.Button();
+            this.buttonLeft = new System.Windows.Forms.Button();
+            this.buttonRight = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelDistance0 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -66,44 +72,38 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.labelDistance3 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.labelAngle1 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.labelAngle2 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.textBoxtestowy = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
-            this.buttonForward = new System.Windows.Forms.Button();
-            this.buttonReverse = new System.Windows.Forms.Button();
-            this.buttonLeft = new System.Windows.Forms.Button();
-            this.buttonRight = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControlMode.SuspendLayout();
             this.tabPageAuto.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).BeginInit();
             this.tabPageRemote.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox11.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -328,6 +328,17 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "CENTRUM STEROWANIA - TRYB AUTONOMICZNY";
             // 
+            // pictureBoxLoad
+            // 
+            this.pictureBoxLoad.Image = global::RobotControlApp.Properties.Resources.load;
+            this.pictureBoxLoad.Location = new System.Drawing.Point(647, 34);
+            this.pictureBoxLoad.Name = "pictureBoxLoad";
+            this.pictureBoxLoad.Size = new System.Drawing.Size(75, 64);
+            this.pictureBoxLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLoad.TabIndex = 7;
+            this.pictureBoxLoad.TabStop = false;
+            this.pictureBoxLoad.Visible = false;
+            // 
             // textBoxMap
             // 
             this.textBoxMap.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -418,6 +429,50 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Kontrola położenia";
             // 
+            // buttonForward
+            // 
+            this.buttonForward.Image = global::RobotControlApp.Properties.Resources.forwardarrow4;
+            this.buttonForward.Location = new System.Drawing.Point(31, 79);
+            this.buttonForward.Name = "buttonForward";
+            this.buttonForward.Size = new System.Drawing.Size(116, 49);
+            this.buttonForward.TabIndex = 3;
+            this.buttonForward.Text = "Przód ";
+            this.buttonForward.UseVisualStyleBackColor = true;
+            this.buttonForward.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // buttonReverse
+            // 
+            this.buttonReverse.Image = global::RobotControlApp.Properties.Resources.reversearrow1;
+            this.buttonReverse.Location = new System.Drawing.Point(31, 244);
+            this.buttonReverse.Name = "buttonReverse";
+            this.buttonReverse.Size = new System.Drawing.Size(116, 56);
+            this.buttonReverse.TabIndex = 4;
+            this.buttonReverse.Text = "Tył ";
+            this.buttonReverse.UseVisualStyleBackColor = true;
+            this.buttonReverse.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // buttonLeft
+            // 
+            this.buttonLeft.Image = global::RobotControlApp.Properties.Resources.leftarrow1;
+            this.buttonLeft.Location = new System.Drawing.Point(31, 133);
+            this.buttonLeft.Name = "buttonLeft";
+            this.buttonLeft.Size = new System.Drawing.Size(50, 105);
+            this.buttonLeft.TabIndex = 5;
+            this.buttonLeft.Text = "Lewo";
+            this.buttonLeft.UseVisualStyleBackColor = true;
+            this.buttonLeft.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // buttonRight
+            // 
+            this.buttonRight.Image = global::RobotControlApp.Properties.Resources.rightarrow1;
+            this.buttonRight.Location = new System.Drawing.Point(97, 133);
+            this.buttonRight.Name = "buttonRight";
+            this.buttonRight.Size = new System.Drawing.Size(50, 105);
+            this.buttonRight.TabIndex = 6;
+            this.buttonRight.Text = "Prawo";
+            this.buttonRight.UseVisualStyleBackColor = true;
+            this.buttonRight.Click += new System.EventHandler(this.button5_Click);
+            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.pictureBox1);
@@ -431,6 +486,16 @@
             this.groupBox10.TabIndex = 13;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Wskazania odległości";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::RobotControlApp.Properties.Resources.robottop2;
+            this.pictureBox1.Location = new System.Drawing.Point(162, 71);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(216, 201);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // groupBox3
             // 
@@ -525,6 +590,16 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Wskazania pochylenia";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::RobotControlApp.Properties.Resources.robotfront;
+            this.pictureBox2.Location = new System.Drawing.Point(258, 36);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(217, 182);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.labelAngle1);
@@ -546,6 +621,16 @@
             this.labelAngle1.TabIndex = 11;
             this.labelAngle1.Text = "0 %";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::RobotControlApp.Properties.Resources.alfastrong;
+            this.pictureBox3.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(149, 156);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 10;
+            this.pictureBox3.TabStop = false;
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.labelAngle2);
@@ -566,6 +651,16 @@
             this.labelAngle2.Size = new System.Drawing.Size(36, 20);
             this.labelAngle2.TabIndex = 11;
             this.labelAngle2.Text = "0 %";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::RobotControlApp.Properties.Resources.alfaright;
+            this.pictureBox4.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(149, 60);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 10;
+            this.pictureBox4.TabStop = false;
             // 
             // textBoxtestowy
             // 
@@ -590,102 +685,6 @@
             this.pictureBox5.TabIndex = 18;
             this.pictureBox5.TabStop = false;
             // 
-            // pictureBoxLoad
-            // 
-            this.pictureBoxLoad.Image = global::RobotControlApp.Properties.Resources.load;
-            this.pictureBoxLoad.Location = new System.Drawing.Point(647, 34);
-            this.pictureBoxLoad.Name = "pictureBoxLoad";
-            this.pictureBoxLoad.Size = new System.Drawing.Size(75, 64);
-            this.pictureBoxLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLoad.TabIndex = 7;
-            this.pictureBoxLoad.TabStop = false;
-            this.pictureBoxLoad.Visible = false;
-            // 
-            // buttonForward
-            // 
-            this.buttonForward.Image = global::RobotControlApp.Properties.Resources.forwardarrow4;
-            this.buttonForward.Location = new System.Drawing.Point(48, 80);
-            this.buttonForward.Name = "buttonForward";
-            this.buttonForward.Size = new System.Drawing.Size(116, 49);
-            this.buttonForward.TabIndex = 3;
-            this.buttonForward.Text = "Przód ";
-            this.buttonForward.UseVisualStyleBackColor = true;
-            this.buttonForward.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // buttonReverse
-            // 
-            this.buttonReverse.Image = global::RobotControlApp.Properties.Resources.reversearrow1;
-            this.buttonReverse.Location = new System.Drawing.Point(48, 245);
-            this.buttonReverse.Name = "buttonReverse";
-            this.buttonReverse.Size = new System.Drawing.Size(116, 56);
-            this.buttonReverse.TabIndex = 4;
-            this.buttonReverse.Text = "Tył ";
-            this.buttonReverse.UseVisualStyleBackColor = true;
-            this.buttonReverse.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // buttonLeft
-            // 
-            this.buttonLeft.Image = global::RobotControlApp.Properties.Resources.leftarrow1;
-            this.buttonLeft.Location = new System.Drawing.Point(48, 134);
-            this.buttonLeft.Name = "buttonLeft";
-            this.buttonLeft.Size = new System.Drawing.Size(50, 105);
-            this.buttonLeft.TabIndex = 5;
-            this.buttonLeft.Text = "Lewo";
-            this.buttonLeft.UseVisualStyleBackColor = true;
-            this.buttonLeft.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // buttonRight
-            // 
-            this.buttonRight.Image = global::RobotControlApp.Properties.Resources.rightarrow1;
-            this.buttonRight.Location = new System.Drawing.Point(114, 134);
-            this.buttonRight.Name = "buttonRight";
-            this.buttonRight.Size = new System.Drawing.Size(50, 105);
-            this.buttonRight.TabIndex = 6;
-            this.buttonRight.Text = "Prawo";
-            this.buttonRight.UseVisualStyleBackColor = true;
-            this.buttonRight.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::RobotControlApp.Properties.Resources.robottop2;
-            this.pictureBox1.Location = new System.Drawing.Point(162, 71);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(216, 201);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::RobotControlApp.Properties.Resources.robotfront;
-            this.pictureBox2.Location = new System.Drawing.Point(258, 36);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(217, 182);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::RobotControlApp.Properties.Resources.alfastrong;
-            this.pictureBox3.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(149, 156);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 10;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::RobotControlApp.Properties.Resources.alfaright;
-            this.pictureBox4.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(149, 60);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 10;
-            this.pictureBox4.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,10 +706,12 @@
             this.tabPageAuto.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).EndInit();
             this.tabPageRemote.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -721,16 +722,14 @@
             this.groupBox6.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }

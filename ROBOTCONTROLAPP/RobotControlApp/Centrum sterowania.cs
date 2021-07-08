@@ -113,7 +113,8 @@ namespace RobotControlApp
             
             
             {
-                if (received_data[received_data.Length - 1] == '*') //check if robot send info about end of measurements
+                
+                if (received_data.Length > 0 &&  received_data[received_data.Length - 1] == '*') //check if robot send info about end of measurements
                 {
                     labelRobotStatus.Text = "POMIARY ZAKOŃCZONE";
                     buttonAutonomousStart.Text = "START";
@@ -234,10 +235,6 @@ namespace RobotControlApp
                 labelConnectionStatus.Text = "OFFLINE";
                 labelConnectionStatus.BackColor = Color.Red;
             }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
         }
     }
 }
