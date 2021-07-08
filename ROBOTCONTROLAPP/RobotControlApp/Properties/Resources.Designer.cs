@@ -63,9 +63,29 @@ namespace RobotControlApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap alfa {
+            get {
+                object obj = ResourceManager.GetObject("alfa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap alfaright {
             get {
                 object obj = ResourceManager.GetObject("alfaright", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap alfastrong {
+            get {
+                object obj = ResourceManager.GetObject("alfastrong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -236,6 +256,46 @@ namespace RobotControlApp.Properties {
         internal static System.Drawing.Bitmap robocze1 {
             get {
                 object obj = ResourceManager.GetObject("robocze1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap robotfront {
+            get {
+                object obj = ResourceManager.GetObject("robotfront", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap robotfronttop {
+            get {
+                object obj = ResourceManager.GetObject("robotfronttop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap robottop {
+            get {
+                object obj = ResourceManager.GetObject("robottop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap robottop2 {
+            get {
+                object obj = ResourceManager.GetObject("robottop2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

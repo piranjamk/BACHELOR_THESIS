@@ -124,8 +124,8 @@
   <data name="load" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\load.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="alfaright" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\alfaright.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="leftarrow1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\leftarrow1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forwardarrow4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwardarrow3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,6 +136,9 @@
   <data name="reversearrow1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\reversearrow1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="forwardarrow1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forwardarrow.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,11 +148,26 @@
   <data name="robocze" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\robocze.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="robottop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\robottop.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="alfastrong" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alfastrong.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="alfa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alfa.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="robocze1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\robocze1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forwardarrow2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwardarrow1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="alfaright" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alfaright.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="robotfront" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\robotfront.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="photo_v1_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\photo_v1_1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,8 +178,8 @@
   <data name="forwardarrow3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwardarrow2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="forwardarrow1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forwardarrow.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="robotfronttop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\robotfronttop.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forwardarrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forwardarrow.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,7 +187,7 @@
   <data name="leftarrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\leftarrow.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="leftarrow1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\leftarrow1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="robottop2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\robottop2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

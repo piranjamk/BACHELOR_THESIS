@@ -48,7 +48,6 @@
             this.tabControlMode = new System.Windows.Forms.TabControl();
             this.tabPageAuto = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
             this.textBoxMap = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,12 +56,7 @@
             this.tabPageRemote = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.buttonForward = new System.Windows.Forms.Button();
-            this.buttonReverse = new System.Windows.Forms.Button();
-            this.buttonLeft = new System.Windows.Forms.Button();
-            this.buttonRight = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelDistance0 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -72,38 +66,44 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.labelDistance3 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.labelAngle1 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.labelAngle2 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.textBoxtestowy = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLoad = new System.Windows.Forms.PictureBox();
+            this.buttonForward = new System.Windows.Forms.Button();
+            this.buttonReverse = new System.Windows.Forms.Button();
+            this.buttonLeft = new System.Windows.Forms.Button();
+            this.buttonRight = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControlMode.SuspendLayout();
             this.tabPageAuto.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).BeginInit();
             this.tabPageRemote.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -328,17 +328,6 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "CENTRUM STEROWANIA - TRYB AUTONOMICZNY";
             // 
-            // pictureBoxLoad
-            // 
-            this.pictureBoxLoad.Image = global::RobotControlApp.Properties.Resources.load;
-            this.pictureBoxLoad.Location = new System.Drawing.Point(647, 34);
-            this.pictureBoxLoad.Name = "pictureBoxLoad";
-            this.pictureBoxLoad.Size = new System.Drawing.Size(75, 64);
-            this.pictureBoxLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLoad.TabIndex = 7;
-            this.pictureBoxLoad.TabStop = false;
-            this.pictureBoxLoad.Visible = false;
-            // 
             // textBoxMap
             // 
             this.textBoxMap.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -422,12 +411,195 @@
             this.groupBox12.Controls.Add(this.buttonReverse);
             this.groupBox12.Controls.Add(this.buttonLeft);
             this.groupBox12.Controls.Add(this.buttonRight);
-            this.groupBox12.Location = new System.Drawing.Point(534, 197);
+            this.groupBox12.Location = new System.Drawing.Point(564, 197);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(205, 389);
+            this.groupBox12.Size = new System.Drawing.Size(175, 389);
             this.groupBox12.TabIndex = 15;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Kontrola położenia";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.pictureBox1);
+            this.groupBox10.Controls.Add(this.groupBox3);
+            this.groupBox10.Controls.Add(this.groupBox4);
+            this.groupBox10.Controls.Add(this.groupBox5);
+            this.groupBox10.Controls.Add(this.groupBox6);
+            this.groupBox10.Location = new System.Drawing.Point(13, 277);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(554, 309);
+            this.groupBox10.TabIndex = 13;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Wskazania odległości";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.labelDistance0);
+            this.groupBox3.Location = new System.Drawing.Point(396, 90);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(149, 54);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Czujnik prawy - front";
+            // 
+            // labelDistance0
+            // 
+            this.labelDistance0.AutoSize = true;
+            this.labelDistance0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelDistance0.Location = new System.Drawing.Point(29, 22);
+            this.labelDistance0.Name = "labelDistance0";
+            this.labelDistance0.Size = new System.Drawing.Size(43, 20);
+            this.labelDistance0.TabIndex = 0;
+            this.labelDistance0.Text = "0 cm";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.labelDistance1);
+            this.groupBox4.Location = new System.Drawing.Point(7, 132);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(149, 54);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Czujnik lewy";
+            // 
+            // labelDistance1
+            // 
+            this.labelDistance1.AutoSize = true;
+            this.labelDistance1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelDistance1.Location = new System.Drawing.Point(23, 22);
+            this.labelDistance1.Name = "labelDistance1";
+            this.labelDistance1.Size = new System.Drawing.Size(43, 20);
+            this.labelDistance1.TabIndex = 1;
+            this.labelDistance1.Text = "0 cm";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.labelDistance2);
+            this.groupBox5.Location = new System.Drawing.Point(396, 179);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(149, 54);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Czujnik prawy - tył";
+            // 
+            // labelDistance2
+            // 
+            this.labelDistance2.AutoSize = true;
+            this.labelDistance2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelDistance2.Location = new System.Drawing.Point(25, 24);
+            this.labelDistance2.Name = "labelDistance2";
+            this.labelDistance2.Size = new System.Drawing.Size(43, 20);
+            this.labelDistance2.TabIndex = 2;
+            this.labelDistance2.Text = "0 cm";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.labelDistance3);
+            this.groupBox6.Location = new System.Drawing.Point(212, 13);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(149, 52);
+            this.groupBox6.TabIndex = 2;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Czujnik przedni";
+            // 
+            // labelDistance3
+            // 
+            this.labelDistance3.AutoSize = true;
+            this.labelDistance3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelDistance3.Location = new System.Drawing.Point(24, 20);
+            this.labelDistance3.Name = "labelDistance3";
+            this.labelDistance3.Size = new System.Drawing.Size(43, 20);
+            this.labelDistance3.TabIndex = 3;
+            this.labelDistance3.Text = "0 cm";
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.pictureBox2);
+            this.groupBox11.Controls.Add(this.groupBox7);
+            this.groupBox11.Controls.Add(this.groupBox8);
+            this.groupBox11.Controls.Add(this.textBoxtestowy);
+            this.groupBox11.Location = new System.Drawing.Point(13, 19);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(726, 265);
+            this.groupBox11.TabIndex = 14;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Wskazania pochylenia";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.labelAngle1);
+            this.groupBox7.Controls.Add(this.pictureBox3);
+            this.groupBox7.Location = new System.Drawing.Point(18, 71);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(223, 181);
+            this.groupBox7.TabIndex = 8;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Nachylenie podłużne";
+            // 
+            // labelAngle1
+            // 
+            this.labelAngle1.AutoSize = true;
+            this.labelAngle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelAngle1.Location = new System.Drawing.Point(161, 41);
+            this.labelAngle1.Name = "labelAngle1";
+            this.labelAngle1.Size = new System.Drawing.Size(36, 20);
+            this.labelAngle1.TabIndex = 11;
+            this.labelAngle1.Text = "0 %";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.labelAngle2);
+            this.groupBox8.Controls.Add(this.pictureBox4);
+            this.groupBox8.Location = new System.Drawing.Point(481, 34);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(239, 91);
+            this.groupBox8.TabIndex = 11;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Nachylenie poprzeczne";
+            // 
+            // labelAngle2
+            // 
+            this.labelAngle2.AutoSize = true;
+            this.labelAngle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelAngle2.Location = new System.Drawing.Point(178, 48);
+            this.labelAngle2.Name = "labelAngle2";
+            this.labelAngle2.Size = new System.Drawing.Size(36, 20);
+            this.labelAngle2.TabIndex = 11;
+            this.labelAngle2.Text = "0 %";
+            // 
+            // textBoxtestowy
+            // 
+            this.textBoxtestowy.Location = new System.Drawing.Point(350, 163);
+            this.textBoxtestowy.Multiline = true;
+            this.textBoxtestowy.Name = "textBoxtestowy";
+            this.textBoxtestowy.Size = new System.Drawing.Size(152, 89);
+            this.textBoxtestowy.TabIndex = 12;
+            this.textBoxtestowy.Visible = false;
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::RobotControlApp.Properties.Resources.logo;
+            this.pictureBox5.Location = new System.Drawing.Point(87, 496);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(149, 133);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 18;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBoxLoad
+            // 
+            this.pictureBoxLoad.Image = global::RobotControlApp.Properties.Resources.load;
+            this.pictureBoxLoad.Location = new System.Drawing.Point(647, 34);
+            this.pictureBoxLoad.Name = "pictureBoxLoad";
+            this.pictureBoxLoad.Size = new System.Drawing.Size(75, 64);
+            this.pictureBoxLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLoad.TabIndex = 7;
+            this.pictureBoxLoad.TabStop = false;
+            this.pictureBoxLoad.Visible = false;
             // 
             // buttonForward
             // 
@@ -473,184 +645,36 @@
             this.buttonRight.UseVisualStyleBackColor = true;
             this.buttonRight.Click += new System.EventHandler(this.button5_Click);
             // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.pictureBox1);
-            this.groupBox10.Controls.Add(this.groupBox3);
-            this.groupBox10.Controls.Add(this.groupBox4);
-            this.groupBox10.Controls.Add(this.groupBox5);
-            this.groupBox10.Controls.Add(this.groupBox6);
-            this.groupBox10.Location = new System.Drawing.Point(13, 277);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(526, 309);
-            this.groupBox10.TabIndex = 13;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Wskazania odległości";
-            // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::RobotControlApp.Properties.Resources.photo_v1_1;
-            this.pictureBox1.Location = new System.Drawing.Point(174, 93);
+            this.pictureBox1.Image = global::RobotControlApp.Properties.Resources.robottop2;
+            this.pictureBox1.Location = new System.Drawing.Point(162, 71);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(149, 141);
+            this.pictureBox1.Size = new System.Drawing.Size(216, 201);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.labelDistance0);
-            this.groupBox3.Location = new System.Drawing.Point(338, 93);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(149, 54);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Czujnik prawy - front";
-            // 
-            // labelDistance0
-            // 
-            this.labelDistance0.AutoSize = true;
-            this.labelDistance0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelDistance0.Location = new System.Drawing.Point(29, 22);
-            this.labelDistance0.Name = "labelDistance0";
-            this.labelDistance0.Size = new System.Drawing.Size(43, 20);
-            this.labelDistance0.TabIndex = 0;
-            this.labelDistance0.Text = "0 cm";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.labelDistance1);
-            this.groupBox4.Location = new System.Drawing.Point(7, 132);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(149, 54);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Czujnik lewy";
-            // 
-            // labelDistance1
-            // 
-            this.labelDistance1.AutoSize = true;
-            this.labelDistance1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelDistance1.Location = new System.Drawing.Point(23, 22);
-            this.labelDistance1.Name = "labelDistance1";
-            this.labelDistance1.Size = new System.Drawing.Size(43, 20);
-            this.labelDistance1.TabIndex = 1;
-            this.labelDistance1.Text = "0 cm";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.labelDistance2);
-            this.groupBox5.Location = new System.Drawing.Point(338, 180);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(149, 54);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Czujnik prawy - tył";
-            // 
-            // labelDistance2
-            // 
-            this.labelDistance2.AutoSize = true;
-            this.labelDistance2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelDistance2.Location = new System.Drawing.Point(25, 24);
-            this.labelDistance2.Name = "labelDistance2";
-            this.labelDistance2.Size = new System.Drawing.Size(43, 20);
-            this.labelDistance2.TabIndex = 2;
-            this.labelDistance2.Text = "0 cm";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.labelDistance3);
-            this.groupBox6.Location = new System.Drawing.Point(174, 34);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(149, 52);
-            this.groupBox6.TabIndex = 2;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Czujnik przedni";
-            // 
-            // labelDistance3
-            // 
-            this.labelDistance3.AutoSize = true;
-            this.labelDistance3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelDistance3.Location = new System.Drawing.Point(24, 20);
-            this.labelDistance3.Name = "labelDistance3";
-            this.labelDistance3.Size = new System.Drawing.Size(43, 20);
-            this.labelDistance3.TabIndex = 3;
-            this.labelDistance3.Text = "0 cm";
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.pictureBox2);
-            this.groupBox11.Controls.Add(this.groupBox7);
-            this.groupBox11.Controls.Add(this.groupBox8);
-            this.groupBox11.Controls.Add(this.textBoxtestowy);
-            this.groupBox11.Location = new System.Drawing.Point(13, 19);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(726, 265);
-            this.groupBox11.TabIndex = 14;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Wskazania pochylenia";
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::RobotControlApp.Properties.Resources.photo_v2_06;
-            this.pictureBox2.Location = new System.Drawing.Point(113, 28);
+            this.pictureBox2.Image = global::RobotControlApp.Properties.Resources.robotfront;
+            this.pictureBox2.Location = new System.Drawing.Point(258, 36);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(161, 125);
+            this.pictureBox2.Size = new System.Drawing.Size(217, 182);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.labelAngle1);
-            this.groupBox7.Controls.Add(this.pictureBox3);
-            this.groupBox7.Location = new System.Drawing.Point(84, 159);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(239, 91);
-            this.groupBox7.TabIndex = 8;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Nachylenie podłużne";
-            // 
-            // labelAngle1
-            // 
-            this.labelAngle1.AutoSize = true;
-            this.labelAngle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelAngle1.Location = new System.Drawing.Point(161, 41);
-            this.labelAngle1.Name = "labelAngle1";
-            this.labelAngle1.Size = new System.Drawing.Size(36, 20);
-            this.labelAngle1.TabIndex = 11;
-            this.labelAngle1.Text = "0 %";
-            // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::RobotControlApp.Properties.Resources.alfaright;
+            this.pictureBox3.Image = global::RobotControlApp.Properties.Resources.alfastrong;
             this.pictureBox3.Location = new System.Drawing.Point(6, 19);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(149, 60);
+            this.pictureBox3.Size = new System.Drawing.Size(149, 156);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.labelAngle2);
-            this.groupBox8.Controls.Add(this.pictureBox4);
-            this.groupBox8.Location = new System.Drawing.Point(350, 36);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(239, 91);
-            this.groupBox8.TabIndex = 11;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Nachylenie poprzeczne";
-            // 
-            // labelAngle2
-            // 
-            this.labelAngle2.AutoSize = true;
-            this.labelAngle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelAngle2.Location = new System.Drawing.Point(178, 48);
-            this.labelAngle2.Name = "labelAngle2";
-            this.labelAngle2.Size = new System.Drawing.Size(36, 20);
-            this.labelAngle2.TabIndex = 11;
-            this.labelAngle2.Text = "0 %";
             // 
             // pictureBox4
             // 
@@ -661,29 +685,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
-            // 
-            // textBoxtestowy
-            // 
-            this.textBoxtestowy.Location = new System.Drawing.Point(350, 163);
-            this.textBoxtestowy.Multiline = true;
-            this.textBoxtestowy.Name = "textBoxtestowy";
-            this.textBoxtestowy.Size = new System.Drawing.Size(152, 89);
-            this.textBoxtestowy.TabIndex = 12;
-            this.textBoxtestowy.Visible = false;
-            // 
-            // serialPort1
-            // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::RobotControlApp.Properties.Resources.logo;
-            this.pictureBox5.Location = new System.Drawing.Point(87, 496);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(149, 133);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 18;
-            this.pictureBox5.TabStop = false;
             // 
             // Form1
             // 
@@ -706,12 +707,10 @@
             this.tabPageAuto.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).EndInit();
             this.tabPageRemote.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -722,14 +721,16 @@
             this.groupBox6.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }

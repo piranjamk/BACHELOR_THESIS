@@ -58,7 +58,7 @@ float kierunek_pierwotny;
 char plansza[ROZMIAR_PLANSZY][ROZMIAR_PLANSZY];
 int pozycja_x = 20;
 int pozycja_y = 20;
-char tryb = '1';
+char tryb = '2';
 
 enum Stany {
 	stan_cofam = 0,
@@ -502,6 +502,37 @@ void skoryguj_kurs() {
 		zatrzymaj_silniki();
 }
 
+
+void skrec_w_lewo_czasowo()
+{
+
+	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 650);
+		__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 650);
+		HAL_GPIO_WritePin(GPIOC, PIN_PRAWY, JAZDA_DO_PRZODU);
+		HAL_GPIO_WritePin(GPIOC, PIN_LEWY, JAZDA_DO_TYLU);
+		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_LEWEGO);
+		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_PRAWEGO);
+		HAL_Delay(600);
+		zatrzymaj_silniki();		//dopisane 	11 05 2021
+
+}
+
+void skrec_w_prawo_czasowo()
+{
+	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 650);
+		__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 650);
+
+		HAL_GPIO_WritePin(GPIOC, PIN_PRAWY, JAZDA_DO_TYLU);
+		HAL_GPIO_WritePin(GPIOC, PIN_LEWY, JAZDA_DO_PRZODU);
+		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_LEWEGO);
+		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_PRAWEGO);
+
+		HAL_Delay(600);
+		zatrzymaj_silniki();
+}
+
+
+
 void updatuj_dane() {
 	int obecny_kierunek = kolejnosc_kierunkow[0];
 	if (obecny_kierunek == polnoc) {
@@ -515,59 +546,51 @@ void updatuj_dane() {
 	}
 }
 
+
+
+
 void zdalnie_steruj(){
 	uint8_t received_char;
 	if (__HAL_UART_GET_FLAG(&uart1, UART_FLAG_RXNE) == SET) {
 
 				HAL_UART_Receive(&uart1, &received_char, 1, 100);
-
-				printf("Odebrano: %c\n", received_char);
 				switch (received_char) {
 				case 'w':
 					jedz_do_przodu();
-					printf("Jade do przodu\n");
 					break;
 				case 's':
 					jedz_do_tylu();
-					printf("Jade do tylu\n");
 					break;
 				case 'a':
-					skrec_w_lewo();
-					printf("Obracam w lewo\n");
+					skrec_w_lewo_czasowo();
 					break;
 				case 'd':
-					skrec_w_prawo();
-					printf("Obracam w prawo\n");
+					skrec_w_prawo_czasowo();
 					break;
-				default:
-					printf("Niezydentyfikowany\n");
+				case '2':
+					tryb = '2';
+					break;
 				}
 
 			}
 			if (__HAL_UART_GET_FLAG(&uart2, UART_FLAG_RXNE) == SET) {
-
 				HAL_UART_Receive(&uart2, &received_char, 1, 100);
-
-				printf("Odebrano: %c\n", received_char);
 				switch (received_char) {
 				case 'w':
 					jedz_do_przodu();
-					printf("Jade do przodu\n");
 					break;
 				case 's':
 					jedz_do_tylu();
-					printf("Jade do tylu\n");
 					break;
 				case 'a':
-					skrec_w_lewo();
-					printf("Obracam w lewo\n");
+					skrec_w_lewo_czasowo();
 					break;
 				case 'd':
-					skrec_w_prawo();
-					printf("Obracam w prawo\n");
+					skrec_w_prawo_czasowo();
 					break;
-				default:
-					printf("Niezydentyfikowany\n");
+				case '2':
+					tryb = '2';
+					break;
 				}
 			}
 
@@ -601,6 +624,15 @@ void zdalnie_steruj(){
 void automatycznie_steruj()
 {
 
+	int pozycja_x = 20;
+	int pozycja_y = 20;
+	{
+			for (int i = 0; i < ROZMIAR_PLANSZY; i++)
+				for (int j = 0; j < ROZMIAR_PLANSZY; j++)
+					plansza[i][j] = '_';
+		}
+
+
 	int przejechana_ilosc_prosto_po_skrecie_w_prawo = 0; //trzeba przejechac minimum dwie dlugosci po luce skrecie
 
 	float distances[4];
@@ -609,19 +641,22 @@ void automatycznie_steruj()
 		if (__HAL_UART_GET_FLAG(&uart1, UART_FLAG_RXNE) == SET) {
 			uint8_t value;
 			HAL_UART_Receive(&uart1, &value, 1, 100);
+			if (value == '1') {tryb = '1'; break;}
 			if (value == '>') { break; } //jesli uzytkownik przeslal '>' to rozpocznij pomiar
+
 		}
 	}
 	int operational_counter = 0;
 	int poczatkowa_pozycja_x = pozycja_x;
 	int poczatkowa_popzycja_y = pozycja_y;
-	while (1) {
+	while (1 && tryb == '2') {
 
 
 		if (__HAL_UART_GET_FLAG(&uart1, UART_FLAG_RXNE) == SET) {
 			uint8_t value;
 			HAL_UART_Receive(&uart1, &value, 1, 100);
-			if (value == '<') { while(1) {/*printf("Zatrzymanie\n");*/ continue; }} //jesli uzytkownik przeslal '>' to rozpocznij pomiar
+			if (value == '1') {tryb = '1'; break;}
+			if (value == '<') { break;} //jesli uzytkownik przeslal '<' to zakoncz
 		}
 
 
@@ -653,10 +688,6 @@ void automatycznie_steruj()
 			}
 		}
 
-
-
-
-
 		if ((operational_counter > 4) && (kolejnosc_kierunkow[0] == polnoc)) {
 					if ( abs(poczatkowa_pozycja_x - pozycja_x) < 1  && abs(poczatkowa_popzycja_y - pozycja_y) < 1) {
 						HAL_Delay(10);
@@ -672,7 +703,7 @@ void automatycznie_steruj()
 								HAL_Delay(10); send_char('.'); HAL_Delay(10); send_char('\n');
 																			send_char('*');
 										 //wyslanie * oznacza zakonczenie mapowania w trybie autonomicznym
-						while (1) continue; //tylko do testow - - -
+						//while (1) continue; //tylko do testow - - -
 						break;
 					}
 				}
@@ -737,13 +768,17 @@ int main(void) {
 	set_pwm();
 	set_usart_printowanie();
 	set_i2c();
-	//init_servo();
+	init_servo();
 	set_ultrasound_pins();
 	HAL_Delay(300);
 	int i = 0;
 	uint8_t received_char;
 
 // 1-prawo 2-lewo 3-tyl 4-przod
+
+
+
+
 
 	int macierz_z_kierunkami[4] = { polnoc, wschod, poludnie, zachod };
 	int macierz_z_odleglosciami[4] = { 0, 0, 0, 0 };

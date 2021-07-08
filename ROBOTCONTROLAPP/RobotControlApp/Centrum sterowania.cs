@@ -101,8 +101,8 @@ namespace RobotControlApp
                         else
                             distance_labels.ElementAt(i).Text = "0 cm";
                     }
-                    labelAngle1.Text = (splited_sensors_data.Count() > 4) ? (splited_sensors_data[4] + " %") : "0 %";
-                    labelAngle2.Text = (splited_sensors_data.Count() > 5) ? (splited_sensors_data[5] + " %") : "0 %";
+                    labelAngle2.Text = (splited_sensors_data.Count() > 4) ? (splited_sensors_data[4] + " %") : "0 %";
+                    labelAngle1.Text = (splited_sensors_data.Count() > 5) ? (splited_sensors_data[5] + " %") : "0 %";
                     all_sensors_data = "";
                 }
                 else
@@ -155,6 +155,12 @@ namespace RobotControlApp
             }
             if (buttonAutonomousStart.Text == "START")
             {
+
+                stringMapRepresentation = "";
+                all_sensors_data = "";
+                sensor_data = "";
+                received_data = "";
+
                 labelRobotStatus.Text = "PRACA";
                 buttonAutonomousStart.Text = "STOP";
                 pictureBoxLoad.Visible = true;
@@ -228,6 +234,10 @@ namespace RobotControlApp
                 labelConnectionStatus.Text = "OFFLINE";
                 labelConnectionStatus.BackColor = Color.Red;
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
         }
     }
 }
