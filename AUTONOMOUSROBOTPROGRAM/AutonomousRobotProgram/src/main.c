@@ -665,7 +665,7 @@ void automatycznie_steruj()
 		update_ultrasound_distances(distances);
 		//printf("Jade \n");
 
-		if (distances[2] < 50) {
+		if (distances[2] < 50) { //rezerwa 10 cm dla bezpieczenstwa
 			int kierunek_obecny = kolejnosc_kierunkow[0];
 			if (kierunek_obecny == polnoc)
 				plansza[pozycja_y][pozycja_x + 1] = 'X';
@@ -713,7 +713,7 @@ void automatycznie_steruj()
 
 
 
-		if (distances[2] > 40 && wykryto_wyrwe_w_prawo == 1)
+		if (distances[2] > 40 && wykryto_wyrwe_w_prawo == 1) //ochrona tuz po skrecie
 			wykryto_wyrwe_w_prawo++;
 		else if (distances[2] > 40 && wykryto_wyrwe_w_prawo == 2)
 			wykryto_wyrwe_w_prawo = 0;
