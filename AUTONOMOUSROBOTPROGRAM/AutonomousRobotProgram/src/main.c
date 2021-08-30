@@ -50,8 +50,8 @@
 
 TIM_HandleTypeDef tim4;
 TIM_HandleTypeDef tim3_servo;
-UART_HandleTypeDef uart1; //DRUKOWANIE PO BLUETOOTH
-UART_HandleTypeDef uart2; //DRUKOWANIE PRZEZ COM VIA USB-LINK
+UART_HandleTypeDef uart1; //PRINTING VIA BLUETOOTH
+UART_HandleTypeDef uart2; //PRINTING VIA COM USING USB-LINK
 I2C_HandleTypeDef i2c;
 float kierunek_pierwotny;
 #define ROZMIAR_PLANSZY 40
@@ -69,9 +69,11 @@ enum Stany {
 	stan_startowy = 8,
 	stan_skonczylem = 9
 };
+
 enum Kierunki {
 	polnoc = 0, zachod = 1, poludnie = 2, wschod = 3
 };
+
 int kolejnosc_kierunkow[4] = { polnoc, wschod, poludnie, zachod };
 char kierunki_slownie[4] = { 'N', 'E', 'S', 'W' };
 
@@ -153,10 +155,10 @@ void set_i2c(void) {
 	i2c.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
 	HAL_I2C_Init(&i2c);
 
-	//konfiguracja modulu
-	lsm_write_reg(LSM_CTRL5, 0x64); // z ustawien drugiego projektu na gicie -magnetometr + acc
-	lsm_write_reg(LSM_CTRL6, 0x20); // z ustawien drugiego projektu na gicie -magnetometr + acc
-	lsm_write_reg(LSM_CTRL7, 0x0); // z ustawien drugiego projektu na gicie -magnetometr + acc
+	//mag config
+	lsm_write_reg(LSM_CTRL5, 0x64);
+	lsm_write_reg(LSM_CTRL6, 0x20);
+	lsm_write_reg(LSM_CTRL7, 0x0);
 	HAL_Delay(100);
 }
 
@@ -171,8 +173,6 @@ void zatrzymaj_silniki() {
 }
 
 void jedz_do_przodu() {
-	//__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //400//doklejone
-	//		__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); // 200//doklejone
 	static int licznik = 0;
 	if (licznik == 0) {
 		HAL_GPIO_WritePin(GPIOC, PIN_PRAWY, JAZDA_DO_PRZODU);
@@ -189,14 +189,10 @@ void jedz_do_przodu() {
 	}
 	HAL_Delay(1700);
 	zatrzymaj_silniki();
-	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //400//doklejone
-		__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 350); // 200//doklejone
+	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //alternative: 400
+		__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 350); //alternative: 200
 }
 
-
-
-//(if przedostatni == skrec w prawo && ostatnia_odlegloc - teraz odleglosc < 50)
-//skrec w lewo)
 
 int skrec_w_prawo() {
 	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 350);
@@ -225,9 +221,8 @@ int skrec_w_prawo() {
 	}
 
 
-	//dopisane 11 05 2021 o 15 -- BEGINING
-	float distances[4];//dopisane 11 05 2021
-		while (1)//dopisane 	11 05 2021
+	float distances[4];
+		while (1)
 		{
 
 			float a = distances[0] + 2;
@@ -240,7 +235,6 @@ int skrec_w_prawo() {
 			}
 			float kat = atan(c / 17);
 			if (abs(kat*180/M_PI) < 4){
-				//printf("Skrecilismy w lewo i mamy ponizej 10 stopni wychodzimy z petli skrecajace w lewo\n");
 				break;
 
 			}
@@ -250,34 +244,25 @@ int skrec_w_prawo() {
 			zatrzymaj_silniki();
 			update_ultrasound_distances(distances);
 		}
-	//dopisane 11 05 2021 o 15 -- END
 
 	HAL_TIM_PWM_Stop(&tim4, KANAL_SILNIKA_PRAWEGO);
 	HAL_TIM_PWM_Stop(&tim4, KANAL_SILNIKA_LEWEGO);
-	//zatrzymaj_silniki();
 	zmien_kolejnosc_kierunkow_w_lewo();
 	return stan_jade;
 }
 
 void wyswietl_dane() {
-	//printf("Jade na: %c\n", kierunki_slownie[kolejnosc_kierunkow[0]]);
-	/*
-	printf("Przebyte odleglosci: N:%d  E:%d  S:%d  W:%d  \n\n",
-			suma_przejechanych_odleglosci[0], suma_przejechanych_odleglosci[1],
-			suma_przejechanych_odleglosci[2], suma_przejechanych_odleglosci[3]);
-	HAL_Delay(2000);
-	*/
 }
 
 int podazaj_przod() {
 	wyswietl_dane();
 	float distances[4];
-	update_ultrasound_distances(distances);	// 1-prawo 2-lewo 3-tyl 4-przod
-	int odleglosc_startowa = distances[3];//trzeba zmierzyc, czy po skrecie w prawo po wykryciu wyrwy
-										  //przejechalismy przynajmniej 30-50 cm
+	update_ultrasound_distances(distances);	// 1-right 2-left 3-back 4-front
+	int odleglosc_startowa = distances[3];//after right turn need to check: if after wall breach detection -
+	  //- minimum distance traveled is: 30-50 cm
 
-	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //400//doklejone
-	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); // 200//doklejone
+	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //alternative 400
+	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); // alternative 200
 
 
 	HAL_GPIO_WritePin(GPIOC, PIN_PRAWY, JAZDA_DO_PRZODU);
@@ -290,14 +275,12 @@ int podazaj_przod() {
 	int skrecam = 0;
 	while (distances[3] > 25.0) {
 
-		//printf("%.3f\n", distances[0]);
-
 		if (distances[2] > 50 && wykryto_wyrwe_w_prawo == 0) {
 			wykryto_wyrwe_w_prawo = 1;
-			HAL_Delay(500); //Poczekaj do pelnego przejechania.
+			HAL_Delay(500); //savety reasons
 			zatrzymaj_silniki();
-			update_ultrasound_distances(distances);	// 1-prawo 2-lewo 3-tyl 4-przod
-			int odleglosc_koncowa = abs(odleglosc_startowa - distances[3]); //abs dla bezpieczenstwa
+			update_ultrasound_distances(distances);	// 1-right 2-left 3-back 4-front
+			int odleglosc_koncowa = abs(odleglosc_startowa - distances[3]); //abs for safety reasons
 			int obecny_kierunek = kolejnosc_kierunkow[0];
 			suma_przejechanych_odleglosci[obecny_kierunek] += odleglosc_koncowa;
 			return stan_obracam_w_prawo;
@@ -308,8 +291,8 @@ int podazaj_przod() {
 			if ((odleglosc_startowa - distances[3]) > 30) {
 				zatrzymaj_silniki();
 
-				update_ultrasound_distances(distances);	// 1-prawo 2-lewo 3-tyl 4-przod
-				int odleglosc_koncowa = abs(odleglosc_startowa - distances[3]); //abs dla bezpieczenstwa
+				update_ultrasound_distances(distances);	// 1-right 2-left 3-back 4-fron
+				int odleglosc_koncowa = abs(odleglosc_startowa - distances[3]); //abs-safety reasons
 				int obecny_kierunek = kolejnosc_kierunkow[0];
 				suma_przejechanych_odleglosci[obecny_kierunek] +=
 						odleglosc_koncowa;
@@ -328,11 +311,10 @@ int podazaj_przod() {
 		}
 		float kat = atan(c / 17);
 		float prawdziwa_odleglosc = ((a + b) / 2) * cos(kat);
-		//printf("a:%f    b:%f   kat:%f  prawdziwa_odleglosc:%.f\n", a, b, zwrot * kat * 180 / M_PI, prawdziwa_odleglosc);
 
 		if (a < 20 && kat * 180 / M_PI > -45) {
-			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 400); //400
-			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 0); // 200
+			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 400); // 400
+			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 0); //alternative: 200
 			while (kat * 180 / M_PI> 0) {
 				update_ultrasound_distances(distances);
 				float a = distances[0] + 2;
@@ -345,22 +327,18 @@ int podazaj_przod() {
 				}
 				kat = atan(c / 17);
 				kat = kat * zwrot;
-				//printf("%f  -kat\n", kat *  180 / M_PI);
 				float prawdziwa_odleglosc = ((a + b) / 2) * cos(kat);
 			}
-			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //400
-			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); // 200
+			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //alternative: 400
+			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); //alternative:  200
 		}
-
-
-
 		update_ultrasound_distances(distances);
 
 	}
 	zatrzymaj_silniki();
 
-	update_ultrasound_distances(distances);	// 1-prawo 2-lewo 3-tyl 4-przod
-	float odleglosc_koncowa = abs(odleglosc_startowa - distances[3]); //abs dla bezpieczenstwa
+	update_ultrasound_distances(distances);	// 1-right 2-left 3-back 4-front
+	float odleglosc_koncowa = abs(odleglosc_startowa - distances[3]); //abs-negative numbers protection
 	int obecny_kierunek = kolejnosc_kierunkow[0];
 	suma_przejechanych_odleglosci[obecny_kierunek] += odleglosc_koncowa;
 
@@ -376,8 +354,8 @@ void nowy_podazaj_przod() {
 	wyswietl_dane();
 	float distances[4];
 	update_ultrasound_distances(distances);	// 1-prawo 2-lewo 3-tyl 4-przod
-	int odleglosc_startowa = distances[3];//trzeba zmierzyc, czy po skrecie w prawo po wykryciu wyrwy
-										  //przejechalismy przynajmniej 30-50 cm
+	int odleglosc_startowa = distances[3];//after right turn need to check: if after wall breach detection -
+										  //- minimum distance traveled is: 30-50 cm
 	while (1) {
 		update_ultrasound_distances(distances);
 		float a = distances[0] + 2;
@@ -391,7 +369,6 @@ void nowy_podazaj_przod() {
 		float kat = atan(c / 17);
 		float prawdziwa_odleglosc = ((a + b) / 2) * cos(kat);
 		printf("a:%f    b:%f   kat:%f  prawdziwa_odleglosc:%.f\n", a, b,zwrot * kat * 180 / M_PI, prawdziwa_odleglosc);
-
 	}
 
 }
@@ -410,10 +387,10 @@ int skrec_w_lewo() {
 	HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_PRAWEGO);
 
 	HAL_Delay(600);
-	zatrzymaj_silniki();		//dopisane 	11 05 2021
+	zatrzymaj_silniki();
 
-	float distances[4];//dopisane 11 05 2021
-	while (1)//dopisane 	11 05 2021
+	float distances[4];
+	while (1)
 	{
 
 		float a = distances[0] + 2;
@@ -426,7 +403,6 @@ int skrec_w_lewo() {
 		}
 		float kat = atan(c / 17);
 		if (abs(kat*180/M_PI) < 4){
-			//printf("Skrecilismy w lewo i mamy ponizej 10 stopni wychodzimy z petli skrecajace w lewo\n");
 			break;
 
 		}
@@ -456,9 +432,9 @@ void jedz_do_tylu() {
 
 void skoryguj_kurs() {
 	float distances[4];
-	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //400//doklejone
-	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); // 200//doklejone
-	update_ultrasound_distances(distances);	// 1-prawo 2-lewo 3-tyl 4-przod
+	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //alternative 400
+	__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); //alternative 200
+	update_ultrasound_distances(distances);	// 1-right 2-left 3-back 4-forward
 	HAL_GPIO_WritePin(GPIOC, PIN_PRAWY, JAZDA_DO_PRZODU);
 	HAL_GPIO_WritePin(GPIOC, PIN_LEWY, JAZDA_DO_PRZODU);
 
@@ -472,11 +448,10 @@ void skoryguj_kurs() {
 		}
 		float kat = atan(c / 17);
 		float prawdziwa_odleglosc = ((a + b) / 2) * cos(kat);
-		//printf("a:%f    b:%f   kat:%f  prawdziwa_odleglosc:%.f\n", a, b, zwrot * kat * 180 / M_PI, prawdziwa_odleglosc);
 
 		if (a < 20 && kat * 180 / M_PI > -45) {
 			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 400); //400
-			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 0); // 200
+			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 0); //alternative 200
 			HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_LEWEGO);
 			HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_PRAWEGO);
 			while (kat * 180 / M_PI> 0) {
@@ -493,11 +468,10 @@ void skoryguj_kurs() {
 				}
 				kat = atan(c / 17);
 				kat = kat * zwrot;
-				//printf("%f  -kat\n", kat *  180 / M_PI);
 				prawdziwa_odleglosc = ((a + b) / 2) * cos(kat);
 			}
-			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //400
-			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); // 200
+			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_LEWEGO, 250); //alternative 400
+			__HAL_TIM_SET_COMPARE(&tim4, KANAL_SILNIKA_PRAWEGO, 310); //alternative  200
 		}
 		zatrzymaj_silniki();
 }
@@ -513,7 +487,7 @@ void skrec_w_lewo_czasowo()
 		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_LEWEGO);
 		HAL_TIM_PWM_Start(&tim4, KANAL_SILNIKA_PRAWEGO);
 		HAL_Delay(400);
-		zatrzymaj_silniki();		//dopisane 	11 05 2021
+		zatrzymaj_silniki();
 
 }
 
@@ -633,7 +607,7 @@ void automatycznie_steruj()
 		}
 
 
-	int przejechana_ilosc_prosto_po_skrecie_w_prawo = 0; //trzeba przejechac minimum dwie dlugosci po luce skrecie
+	int przejechana_ilosc_prosto_po_skrecie_w_prawo = 0; //need to ravel at least two length after turn
 
 	float distances[4];
 
@@ -642,7 +616,7 @@ void automatycznie_steruj()
 			uint8_t value;
 			HAL_UART_Receive(&uart1, &value, 1, 100);
 			if (value == '1') {tryb = '1'; break;}
-			if (value == '>') { break; } //jesli uzytkownik przeslal '>' to rozpocznij pomiar
+			if (value == '>') { break; } //if user sent '>' - start measurements
 
 		}
 	}
@@ -656,16 +630,15 @@ void automatycznie_steruj()
 			uint8_t value;
 			HAL_UART_Receive(&uart1, &value, 1, 100);
 			if (value == '1') {tryb = '1'; break;}
-			if (value == '<') { break;} //jesli uzytkownik przeslal '<' to zakoncz
+			if (value == '<') { break;} //if user sent '<' - stop measurements
 		}
 
 
 		operational_counter++;
 
 		update_ultrasound_distances(distances);
-		//printf("Jade \n");
 
-		if (distances[2] < 50) { //rezerwa 10 cm dla bezpieczenstwa
+		if (distances[2] < 50) { //10 cm for safety reasons
 			int kierunek_obecny = kolejnosc_kierunkow[0];
 			if (kierunek_obecny == polnoc)
 				plansza[pozycja_y][pozycja_x + 1] = 'X';
@@ -702,8 +675,7 @@ void automatycznie_steruj()
 								}
 								HAL_Delay(10); send_char('.'); HAL_Delay(10); send_char('\n');
 																			send_char('*');
-										 //wyslanie * oznacza zakonczenie mapowania w trybie autonomicznym
-						//while (1) continue; //tylko do testow - - -
+										 //sending * meaning: stop mapping in autonomic mode
 						break;
 					}
 				}
@@ -713,7 +685,7 @@ void automatycznie_steruj()
 
 
 
-		if (distances[2] > 40 && wykryto_wyrwe_w_prawo == 1) //ochrona tuz po skrecie
+		if (distances[2] > 40 && wykryto_wyrwe_w_prawo == 1) //check just after turn
 			wykryto_wyrwe_w_prawo++;
 		else if (distances[2] > 40 && wykryto_wyrwe_w_prawo == 2)
 			wykryto_wyrwe_w_prawo = 0;
@@ -721,11 +693,11 @@ void automatycznie_steruj()
 		if (distances[2] > 40 && wykryto_wyrwe_w_prawo == 0)
 		{
 			wykryto_wyrwe_w_prawo = 1;
-			HAL_Delay(700); //Poczekaj do pelnego przejechania.
+			HAL_Delay(700); //a few additional miliseconds - savety reasons
 			zatrzymaj_silniki();
 			skrec_w_prawo();
 
-		} else if(distances[2] < 40){	//ochrona skretu
+		} else if(distances[2] < 40){	//turn protection
 			wykryto_wyrwe_w_prawo = 1;
 		}
 
@@ -750,7 +722,6 @@ int main(void) {
 			for (int j = 0; j < ROZMIAR_PLANSZY; j++)
 				plansza[i][j] = '_';
 	}
-	//SystemClock_Config();
 	SystemCoreClock = 8000000; // sys tick, hal_delay w ms
 	HAL_Init();
 	__HAL_RCC_GPIOA_CLK_ENABLE();
@@ -774,12 +745,6 @@ int main(void) {
 	int i = 0;
 	uint8_t received_char;
 
-// 1-prawo 2-lewo 3-tyl 4-przod
-
-
-
-
-
 	int macierz_z_kierunkami[4] = { polnoc, wschod, poludnie, zachod };
 	int macierz_z_odleglosciami[4] = { 0, 0, 0, 0 };
 	enum Stany stan = stan_startowy;
@@ -789,12 +754,8 @@ int main(void) {
 			break;
 	}
 
-
-	lsm_write_reg(LSM_CTRL1, 0x40 | 0x07); // nadpis i poprawa
-	lsm_write_reg(LSM_CTRL5, 0x80 | 0x10); //nadpis i poprawa
-
-
-
+	lsm_write_reg(LSM_CTRL1, 0x40 | 0x07);
+	lsm_write_reg(LSM_CTRL5, 0x80 | 0x10);
 
 	while(1){
 		if (tryb == '1') zdalnie_steruj();

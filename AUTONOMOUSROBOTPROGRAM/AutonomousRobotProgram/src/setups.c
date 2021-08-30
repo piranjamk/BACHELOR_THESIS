@@ -4,7 +4,6 @@
  * konfiguracja poszczegolnych modulow
  */
 
-// BEGIN - UPORZADKOWAC PO TESTACH - POWTORZENIE Z MAINA
 #define LSM_TEMP_OUT			0x05
 #define LSM_STATUS_M			0x07
 #define LSM_OUT_X_M				0x08
@@ -23,12 +22,7 @@
 #define LSM_OUT_X_A				0x28
 #define LSM_OUT_Y_A				0x2a
 #define LSM_OUT_Z_A				0x2c
-
 #define LSM_ADDR			0x3a
-
-
-
-
 #define CZAS_JAZDY_DO_PRZODU 400
 #define CZAS_JAZDY_DO_TYLU	400
 #define WSPOLCZYNNIK_KORYGUJACY 0.1
@@ -43,16 +37,11 @@
 #define WARTOSC_WYPELNIENIA_LEWA 300//589
 #define WARTOSC_WYPELNIENIA_PRAWA 300//600
 
-
 extern TIM_HandleTypeDef tim4;
 extern TIM_HandleTypeDef tim3_servo;
-extern UART_HandleTypeDef uart1;//DRUKOWANIE PO BLUOTOOTH
-extern UART_HandleTypeDef uart2;//DRUKOWANIE PRZEZ COM VIA USB-LINK
+extern UART_HandleTypeDef uart1;//PRINTING VIA BLUOTOOTH
+extern UART_HandleTypeDef uart2;//DRUKOWANIE VIA COM USING USB-LINK
 extern I2C_HandleTypeDef i2c;
-// END - UPORZADKOWAC PO TESTACH - POWTORZENIE Z MAINA
-
-
-
 
 void set_piny_kontrolne_mostka(void) {
 	GPIO_InitTypeDef gpio;
@@ -74,7 +63,7 @@ void set_piny_pwm_mostka() {
 	HAL_GPIO_Init(GPIOB, &gpio);
 }
 void set_przycisk(void) {
-	//uzbrojenie robota
+	//safety button - push to let for work
 	GPIO_InitTypeDef gpio;
 	gpio.Pin = GPIO_PIN_13;
 	gpio.Mode = GPIO_MODE_INPUT;
@@ -86,7 +75,7 @@ void set_przycisk(void) {
 void set_pwm(void) {
 	tim4.Instance = TIM4;
 	tim4.Init.Period = 1000 - 1;
-	tim4.Init.Prescaler = 8 - 1; //8000 - 1;
+	tim4.Init.Prescaler = 8 - 1;
 	tim4.Init.ClockDivision = 0;
 	tim4.Init.CounterMode = TIM_COUNTERMODE_UP;
 	tim4.Init.RepetitionCounter = 0;
@@ -95,7 +84,7 @@ void set_pwm(void) {
 
 	TIM_OC_InitTypeDef oc;
 	oc.OCMode = TIM_OCMODE_PWM1;
-	oc.Pulse = WARTOSC_WYPELNIENIA_LEWA; //(int)(WARTOSC_WYPELNIENIA - WARTOSC_WYPELNIENIA * WSPOLCZYNNIK_KORYGUJACY);
+	oc.Pulse = WARTOSC_WYPELNIENIA_LEWA;
 	oc.OCPolarity = TIM_OCPOLARITY_HIGH;
 	oc.OCNPolarity = TIM_OCNPOLARITY_LOW;
 	oc.OCFastMode = TIM_OCFAST_ENABLE;
@@ -103,7 +92,7 @@ void set_pwm(void) {
 	oc.OCNIdleState = TIM_OCNIDLESTATE_RESET;
 	HAL_TIM_PWM_ConfigChannel(&tim4, &oc, KANAL_SILNIKA_LEWEGO);
 
-	oc.Pulse = WARTOSC_WYPELNIENIA_PRAWA; //WARTOSC_WYPELNIENIA;
+	oc.Pulse = WARTOSC_WYPELNIENIA_PRAWA;
 	HAL_TIM_PWM_ConfigChannel(&tim4, &oc, KANAL_SILNIKA_PRAWEGO);
 }
 
@@ -157,9 +146,9 @@ void init_servo() {
 	HAL_GPIO_Init(GPIOA, &gpio_servo);
 
 	tim3_servo.Instance = TIM3;
-	tim3_servo.Init.Prescaler = 160 - 1;	//4 - 1;
+	tim3_servo.Init.Prescaler = 160 - 1;
 	tim3_servo.Init.CounterMode = TIM_COUNTERMODE_UP;
-	tim3_servo.Init.Period = 1000 - 1;	//20000 - 1;
+	tim3_servo.Init.Period = 1000 - 1;
 	tim3_servo.Init.ClockDivision = 0;
 	tim3_servo.Init.RepetitionCounter = 0;
 	tim3_servo.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -168,7 +157,7 @@ void init_servo() {
 
 	TIM_OC_InitTypeDef oc;
 	oc.OCMode = TIM_OCMODE_PWM2;
-	oc.Pulse = 120; // OD 26 DO 120     27-69-120		     stare:26-70-120
+	oc.Pulse = 120; // ranges 26 DO 120     27-69-120		     old:26-70-120
 	oc.OCPolarity = TIM_OCPOLARITY_LOW;
 	oc.OCNPolarity = TIM_OCNPOLARITY_LOW;
 	oc.OCFastMode = TIM_OCFAST_ENABLE;
@@ -177,12 +166,10 @@ void init_servo() {
 	HAL_TIM_OC_ConfigChannel(&tim3_servo, &oc, TIM_CHANNEL_1);
 
 	HAL_TIM_PWM_Start(&tim3_servo, TIM_CHANNEL_1);
-	//tim3_servo.Instance->CCR1 = 50;
 	HAL_Delay(500);
-	//HAL_TIM_PWM_Stop(&tim3_servo, TIM_CHANNEL_1);
 }
 
-void set_ultrasound_pins() {				//5V PINS!!!
+void set_ultrasound_pins() {				//CAUTION: 5V PINS!!!
 	GPIO_InitTypeDef gpio_ultrasound_pin;
 	//BEGIN TRIGGERS
 	gpio_ultrasound_pin.Mode = GPIO_MODE_OUTPUT_PP;

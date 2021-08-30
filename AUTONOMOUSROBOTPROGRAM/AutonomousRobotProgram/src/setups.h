@@ -1,6 +1,6 @@
 #pragma once
 /*
- * deklaracje dla konfiguracji poszczegolnych modulow
+ * declarations: config functions for modules
  */
 
 void set_piny_kontrolne_mostka();
