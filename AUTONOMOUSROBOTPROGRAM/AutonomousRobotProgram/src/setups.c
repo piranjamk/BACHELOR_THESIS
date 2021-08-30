@@ -22,28 +22,28 @@
 #define LSM_OUT_X_A				0x28
 #define LSM_OUT_Y_A				0x2a
 #define LSM_OUT_Z_A				0x2c
-#define LSM_ADDR			0x3a
-#define CZAS_JAZDY_DO_PRZODU 400
-#define CZAS_JAZDY_DO_TYLU	400
-#define WSPOLCZYNNIK_KORYGUJACY 0.1
-#define CZAS_OBROTU_W_LEWO 600
-#define CZAS_OBROTU_W_PRAWO 900
-#define JAZDA_DO_PRZODU GPIO_PIN_RESET
-#define JAZDA_DO_TYLU GPIO_PIN_SET
-#define KANAL_SILNIKA_LEWEGO TIM_CHANNEL_4
-#define KANAL_SILNIKA_PRAWEGO TIM_CHANNEL_3
-#define PIN_LEWY GPIO_PIN_1
-#define PIN_PRAWY GPIO_PIN_0
-#define WARTOSC_WYPELNIENIA_LEWA 300//589
+#define LSM_ADDRES			0x3a
+#define TIME_OF_FORWARD_MOVING 400
+#define TIME_OF_REVERSE_MOVING	500
+#define ADDITIONAL_COURSE_ADJUSTEMENTS 0.1
+#define TIME_OF_LEFT_TURN 600
+#define TIME_OF_RIGHT_TURN 900
+#define MOVING_FORWARD GPIO_PIN_RESET
+#define MOVING_REVERSE GPIO_PIN_SET
+#define LEFT_ENGINE_CANAL TIM_CHANNEL_4
+#define RIGHT_ENGINE_CANAL TIM_CHANNEL_3
+#define LEFT_PIN GPIO_PIN_1
+#define RIGHT_PIN GPIO_PIN_0
+#define LEFT_ENGINE_VALUE 300//589
 #define WARTOSC_WYPELNIENIA_PRAWA 300//600
 
 extern TIM_HandleTypeDef tim4;
 extern TIM_HandleTypeDef tim3_servo;
 extern UART_HandleTypeDef uart1;//PRINTING VIA BLUOTOOTH
-extern UART_HandleTypeDef uart2;//DRUKOWANIE VIA COM USING USB-LINK
+extern UART_HandleTypeDef uart2;//PRINTING VIA COM USING USB-LINK
 extern I2C_HandleTypeDef i2c;
 
-void set_piny_kontrolne_mostka(void) {
+void setControlPinsBridge(void) {
 	GPIO_InitTypeDef gpio;
 	gpio.Mode = GPIO_MODE_OUTPUT_PP;
 	gpio.Pin = GPIO_PIN_1 | GPIO_PIN_0;
@@ -54,7 +54,7 @@ void set_piny_kontrolne_mostka(void) {
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0 | GPIO_PIN_1, GPIO_PIN_RESET);
 }
 
-void set_piny_pwm_mostka() {
+void setPwmPinsBridge() {
 	GPIO_InitTypeDef gpio;
 	gpio.Mode = GPIO_MODE_AF_PP;
 	gpio.Pin = GPIO_PIN_8 | GPIO_PIN_9;
@@ -62,7 +62,7 @@ void set_piny_pwm_mostka() {
 	gpio.Speed = GPIO_SPEED_FREQ_HIGH;
 	HAL_GPIO_Init(GPIOB, &gpio);
 }
-void set_przycisk(void) {
+void setButton(void) {
 	//safety button - push to let for work
 	GPIO_InitTypeDef gpio;
 	gpio.Pin = GPIO_PIN_13;
@@ -72,7 +72,7 @@ void set_przycisk(void) {
 	HAL_GPIO_Init(GPIOC, &gpio);
 }
 
-void set_pwm(void) {
+void setPwm(void) {
 	tim4.Instance = TIM4;
 	tim4.Init.Period = 1000 - 1;
 	tim4.Init.Prescaler = 8 - 1;
@@ -84,20 +84,19 @@ void set_pwm(void) {
 
 	TIM_OC_InitTypeDef oc;
 	oc.OCMode = TIM_OCMODE_PWM1;
-	oc.Pulse = WARTOSC_WYPELNIENIA_LEWA;
+	oc.Pulse = LEFT_ENGINE_VALUE;
 	oc.OCPolarity = TIM_OCPOLARITY_HIGH;
 	oc.OCNPolarity = TIM_OCNPOLARITY_LOW;
 	oc.OCFastMode = TIM_OCFAST_ENABLE;
 	oc.OCIdleState = TIM_OCIDLESTATE_SET;
 	oc.OCNIdleState = TIM_OCNIDLESTATE_RESET;
-	HAL_TIM_PWM_ConfigChannel(&tim4, &oc, KANAL_SILNIKA_LEWEGO);
+	HAL_TIM_PWM_ConfigChannel(&tim4, &oc, LEFT_ENGINE_CANAL);
 
 	oc.Pulse = WARTOSC_WYPELNIENIA_PRAWA;
-	HAL_TIM_PWM_ConfigChannel(&tim4, &oc, KANAL_SILNIKA_PRAWEGO);
+	HAL_TIM_PWM_ConfigChannel(&tim4, &oc, RIGHT_ENGINE_CANAL);
 }
 
-void set_usart_printowanie(void) {
-
+void setUsartPrinting(void) {
 	GPIO_InitTypeDef gpio_usart1;				//UART - BLUETOOTH
 	gpio_usart1.Pin = GPIO_PIN_9;
 	gpio_usart1.Mode = GPIO_MODE_AF_PP;
@@ -137,7 +136,7 @@ void set_usart_printowanie(void) {
 	HAL_UART_Init(&uart2);
 }
 
-void init_servo() {
+void initServo() {
 	GPIO_InitTypeDef gpio_servo;			//SERVO 1ms - 2ms
 	gpio_servo.Pin = GPIO_PIN_6;
 	gpio_servo.Pull = GPIO_NOPULL;
@@ -169,7 +168,7 @@ void init_servo() {
 	HAL_Delay(500);
 }
 
-void set_ultrasound_pins() {				//CAUTION: 5V PINS!!!
+void setUltrasoundPins() {				//CAUTION: 5V PINS!!!
 	GPIO_InitTypeDef gpio_ultrasound_pin;
 	//BEGIN TRIGGERS
 	gpio_ultrasound_pin.Mode = GPIO_MODE_OUTPUT_PP;

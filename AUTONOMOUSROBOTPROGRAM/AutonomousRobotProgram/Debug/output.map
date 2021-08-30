@@ -164,21 +164,21 @@ c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.20
 Allocating common symbols
 Common symbol       size              file
 
-kierunek_pierwotny  0x4               src/main.o
 __lock___atexit_recursive_mutex
                     0x1               c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
 __lock___arc4random_mutex
                     0x1               c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
 errno               0x4               c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-reent.o)
 tim3_servo          0x40              src/main.o
+board               0x640             src/main.o
 uart1               0x40              src/main.o
 uwTick              0x4               HAL_Driver/Src/stm32f1xx_hal.o
+initialHeading      0x4               src/main.o
 pFlash              0x20              HAL_Driver/Src/stm32f1xx_hal_flash.o
 __lock___env_recursive_mutex
                     0x1               c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
 __lock___sinit_recursive_mutex
                     0x1               c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
-plansza             0x640             src/main.o
 __lock___malloc_recursive_mutex
                     0x1               c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc.a(lib_a-lock.o)
 i2c                 0x54              src/main.o
@@ -9267,15 +9267,15 @@ Discarded input sections
  .group         0x00000000        0xc src/main.o
  .group         0x00000000        0xc src/main.o
  .text          0x00000000        0x0 src/main.o
- .text.lsm_read_reg
+ .text.lsmReadRegister
                 0x00000000       0x3c src/main.o
  .text.get_heading_degrees
                 0x00000000       0xe4 src/main.o
- .text.wyswietl_dane
+ .text.showData
                 0x00000000        0xc src/main.o
- .text.podazaj_przod
-                0x00000000      0x4c4 src/main.o
- .text.nowy_podazaj_przod
+ .text.moveForward
+                0x00000000      0x4b4 src/main.o
+ .text.newMoveForward
                 0x00000000      0x164 src/main.o
  .debug_macro   0x00000000      0xa72 src/main.o
  .debug_macro   0x00000000       0x28 src/main.o
@@ -10716,85 +10716,85 @@ LOAD c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17
  *fill*         0x0800360e        0x2 
  .text.UART_SetConfig
                 0x08003610      0x230 HAL_Driver/Src/stm32f1xx_hal_uart.o
- .text.zmien_kolejnosc_kierunkow_w_prawo
+ .text.changeHeadingSequencesRight
                 0x08003840       0x48 src/main.o
-                0x08003840                zmien_kolejnosc_kierunkow_w_prawo
- .text.zmien_kolejnosc_kierunkow_w_lewo
+                0x08003840                changeHeadingSequencesRight
+ .text.changeHeadingSequencesLeft
                 0x08003888       0x44 src/main.o
-                0x08003888                zmien_kolejnosc_kierunkow_w_lewo
- .text.send_char
+                0x08003888                changeHeadingSequencesLeft
+ .text.send_single_character
                 0x080038cc       0x3c src/main.o
-                0x080038cc                send_char
+                0x080038cc                send_single_character
  .text.__io_putchar
                 0x08003908       0x28 src/main.o
                 0x08003908                __io_putchar
- .text.lsm_write_reg
+ .text.lsmWriteRegister
                 0x08003930       0x38 src/main.o
-                0x08003930                lsm_write_reg
+                0x08003930                lsmWriteRegister
  .text.lsm_read_value
                 0x08003968       0x44 src/main.o
                 0x08003968                lsm_read_value
- .text.set_i2c  0x080039ac       0x94 src/main.o
-                0x080039ac                set_i2c
+ .text.setI2c   0x080039ac       0x94 src/main.o
+                0x080039ac                setI2c
  .text.waiting  0x08003a40       0x24 src/main.o
                 0x08003a40                waiting
- .text.zatrzymaj_silniki
+ .text.stopAllEngines
                 0x08003a64       0x1c src/main.o
-                0x08003a64                zatrzymaj_silniki
- .text.jedz_do_przodu
+                0x08003a64                stopAllEngines
+ .text.goForward
                 0x08003a80       0x98 src/main.o
-                0x08003a80                jedz_do_przodu
- .text.skrec_w_prawo
+                0x08003a80                goForward
+ .text.turnRight
                 0x08003b18      0x1e0 src/main.o
-                0x08003b18                skrec_w_prawo
- .text.skrec_w_lewo
+                0x08003b18                turnRight
+ .text.turnLeft
                 0x08003cf8      0x188 src/main.o
-                0x08003cf8                skrec_w_lewo
- .text.jedz_do_tylu
+                0x08003cf8                turnLeft
+ .text.goReverse
                 0x08003e80       0x4c src/main.o
-                0x08003e80                jedz_do_tylu
+                0x08003e80                goReverse
  *fill*         0x08003ecc        0x4 
- .text.skoryguj_kurs
+ .text.adjustCurrentCourse
                 0x08003ed0      0x2e4 src/main.o
-                0x08003ed0                skoryguj_kurs
- .text.skrec_w_lewo_czasowo
+                0x08003ed0                adjustCurrentCourse
+ .text.turnLeftWithTime
                 0x080041b4       0x5c src/main.o
-                0x080041b4                skrec_w_lewo_czasowo
- .text.skrec_w_prawo_czasowo
+                0x080041b4                turnLeftWithTime
+ .text.turnRightWithTime
                 0x08004210       0x5c src/main.o
-                0x08004210                skrec_w_prawo_czasowo
- .text.updatuj_dane
+                0x08004210                turnRightWithTime
+ .text.updateData
                 0x0800426c       0x68 src/main.o
-                0x0800426c                updatuj_dane
+                0x0800426c                updateData
  *fill*         0x080042d4        0x4 
- .text.zdalnie_steruj
+ .text.remoteWorking
                 0x080042d8      0x2b8 src/main.o
-                0x080042d8                zdalnie_steruj
- .text.automatycznie_steruj
+                0x080042d8                remoteWorking
+ .text.automaticWorking
                 0x08004590      0x3d4 src/main.o
-                0x08004590                automatycznie_steruj
+                0x08004590                automaticWorking
  .text.main     0x08004964      0x1c4 src/main.o
                 0x08004964                main
- .text.set_piny_kontrolne_mostka
+ .text.setControlPinsBridge
                 0x08004b28       0x40 src/setups.o
-                0x08004b28                set_piny_kontrolne_mostka
- .text.set_piny_pwm_mostka
+                0x08004b28                setControlPinsBridge
+ .text.setPwmPinsBridge
                 0x08004b68       0x30 src/setups.o
-                0x08004b68                set_piny_pwm_mostka
- .text.set_przycisk
+                0x08004b68                setPwmPinsBridge
+ .text.setButton
                 0x08004b98       0x30 src/setups.o
-                0x08004b98                set_przycisk
- .text.set_pwm  0x08004bc8       0x88 src/setups.o
-                0x08004bc8                set_pwm
- .text.set_usart_printowanie
+                0x08004b98                setButton
+ .text.setPwm   0x08004bc8       0x88 src/setups.o
+                0x08004bc8                setPwm
+ .text.setUsartPrinting
                 0x08004c50       0xdc src/setups.o
-                0x08004c50                set_usart_printowanie
- .text.init_servo
+                0x08004c50                setUsartPrinting
+ .text.initServo
                 0x08004d2c       0xac src/setups.o
-                0x08004d2c                init_servo
- .text.set_ultrasound_pins
+                0x08004d2c                initServo
+ .text.setUltrasoundPins
                 0x08004dd8       0x9c src/setups.o
-                0x08004dd8                set_ultrasound_pins
+                0x08004dd8                setUltrasoundPins
  .text.SysTick_Handler
                 0x08004e74       0x10 src/stm32f1xx_it.o
                 0x08004e74                SysTick_Handler
@@ -11143,13 +11143,14 @@ LOAD c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17
 .rodata         0x0800bb90      0x558
                 0x0800bb90                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x0800bb90       0x90 src/main.o
- .rodata        0x0800bc20        0x6 src/setups.o
- *fill*         0x0800bc26        0x2 
- .rodata        0x0800bc28       0x18 src/system_stm32f1xx.o
-                0x0800bc28                AHBPrescTable
-                0x0800bc38                APBPrescTable
+ .rodata        0x0800bb90       0x8c src/main.o
+ .rodata        0x0800bc1c        0x6 src/setups.o
+ *fill*         0x0800bc22        0x2 
+ .rodata        0x0800bc24       0x18 src/system_stm32f1xx.o
+                0x0800bc24                AHBPrescTable
+                0x0800bc34                APBPrescTable
  *(.rodata*)
+ *fill*         0x0800bc3c        0x4 
  .rodata.atanhi
                 0x0800bc40       0x20 c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libm.a(lib_a-s_atan.o)
  .rodata.atanlo
@@ -11242,11 +11243,11 @@ LOAD c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17
                 0x20000004                uwTickFreq
  *fill*         0x20000005        0x3 
  .data          0x20000008       0x20 src/main.o
-                0x20000008                pozycja_x
-                0x2000000c                pozycja_y
-                0x20000010                tryb
-                0x20000014                kolejnosc_kierunkow
-                0x20000024                kierunki_slownie
+                0x20000008                position_x
+                0x2000000c                position_y
+                0x20000010                mode
+                0x20000014                headingSequence
+                0x20000024                charHeadings
  .data          0x20000028        0x4 src/system_stm32f1xx.o
                 0x20000028                SystemCoreClock
  *(.data*)
@@ -11283,8 +11284,8 @@ LOAD c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17
  *(.bss)
  .bss           0x200009d8       0x1c c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
  .bss           0x200009f4       0x18 src/main.o
-                0x200009f4                suma_przejechanych_odleglosci
-                0x20000a04                wykryto_wyrwe_w_prawo
+                0x200009f4                sumOfDistances
+                0x20000a04                breachDetected
  .bss           0x20000a0c        0x8 src/syscalls.o
                 0x20000a0c                __env
  *(.bss*)
@@ -11304,10 +11305,10 @@ LOAD c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17
  COMMON         0x20000a48        0x4 HAL_Driver/Src/stm32f1xx_hal.o
                 0x20000a48                uwTick
  COMMON         0x20000a4c      0x798 src/main.o
-                0x20000a4c                kierunek_pierwotny
-                0x20000a50                tim3_servo
-                0x20000a90                uart1
-                0x20000ad0                plansza
+                0x20000a4c                tim3_servo
+                0x20000a8c                board
+                0x200010cc                uart1
+                0x2000110c                initialHeading
                 0x20001110                i2c
                 0x20001164                uart2
                 0x200011a4                tim4
@@ -11542,7 +11543,7 @@ LOAD c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17
                 0x00001019       0x1d c:/ac6/systemworkbench/plugins/fr.ac6.mcu.externaltools.arm-none.win32_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
 OUTPUT(AutonomousRobotProgram.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x11f66
+.debug_info     0x00000000    0x11f24
  .debug_info    0x00000000      0xf0a HAL_Driver/Src/stm32f1xx_hal.o
  .debug_info    0x00000f0a     0x1358 HAL_Driver/Src/stm32f1xx_hal_cortex.o
  .debug_info    0x00002262      0xebd HAL_Driver/Src/stm32f1xx_hal_gpio.o
@@ -11551,13 +11552,13 @@ OUTPUT(AutonomousRobotProgram.elf elf32-littlearm)
  .debug_info    0x000064b5     0x1039 HAL_Driver/Src/stm32f1xx_hal_rcc.o
  .debug_info    0x000074ee     0x2a25 HAL_Driver/Src/stm32f1xx_hal_tim.o
  .debug_info    0x00009f13     0x19f0 HAL_Driver/Src/stm32f1xx_hal_uart.o
- .debug_info    0x0000b903     0x1ffc src/main.o
- .debug_info    0x0000d8ff     0x1505 src/setups.o
- .debug_info    0x0000ee04      0x994 src/stm32f1xx_it.o
- .debug_info    0x0000f798      0xf2e src/syscalls.o
- .debug_info    0x000106c6      0xc59 src/system_stm32f1xx.o
- .debug_info    0x0001131f      0xc25 src/ultrasounds.o
- .debug_info    0x00011f44       0x22 startup/startup_stm32f103xb.o
+ .debug_info    0x0000b903     0x1fba src/main.o
+ .debug_info    0x0000d8bd     0x1505 src/setups.o
+ .debug_info    0x0000edc2      0x994 src/stm32f1xx_it.o
+ .debug_info    0x0000f756      0xf2e src/syscalls.o
+ .debug_info    0x00010684      0xc59 src/system_stm32f1xx.o
+ .debug_info    0x000112dd      0xc25 src/ultrasounds.o
+ .debug_info    0x00011f02       0x22 startup/startup_stm32f103xb.o
 
 .debug_abbrev   0x00000000     0x25f5
  .debug_abbrev  0x00000000      0x2f5 HAL_Driver/Src/stm32f1xx_hal.o
@@ -11625,7 +11626,7 @@ OUTPUT(AutonomousRobotProgram.elf elf32-littlearm)
  .debug_ranges  0x00000c18       0x28 src/ultrasounds.o
  .debug_ranges  0x00000c40       0x20 startup/startup_stm32f103xb.o
 
-.debug_macro    0x00000000    0x1923f
+.debug_macro    0x00000000    0x1923b
  .debug_macro   0x00000000      0x426 HAL_Driver/Src/stm32f1xx_hal.o
  .debug_macro   0x00000426      0xa72 HAL_Driver/Src/stm32f1xx_hal.o
  .debug_macro   0x00000e98      0x224 HAL_Driver/Src/stm32f1xx_hal.o
@@ -11707,36 +11708,36 @@ OUTPUT(AutonomousRobotProgram.elf elf32-littlearm)
  .debug_macro   0x0001625a      0x414 HAL_Driver/Src/stm32f1xx_hal_rcc.o
  .debug_macro   0x0001666e      0x402 HAL_Driver/Src/stm32f1xx_hal_tim.o
  .debug_macro   0x00016a70      0x403 HAL_Driver/Src/stm32f1xx_hal_uart.o
- .debug_macro   0x00016e73      0x546 src/main.o
- .debug_macro   0x000173b9       0x16 src/main.o
- .debug_macro   0x000173cf       0x35 src/main.o
- .debug_macro   0x00017404      0x1e1 src/main.o
- .debug_macro   0x000175e5       0x16 src/main.o
- .debug_macro   0x000175fb       0x16 src/main.o
- .debug_macro   0x00017611       0x29 src/main.o
- .debug_macro   0x0001763a      0x4c6 src/setups.o
- .debug_macro   0x00017b00      0x40c src/stm32f1xx_it.o
- .debug_macro   0x00017f0c      0x243 src/syscalls.o
- .debug_macro   0x0001814f       0x58 src/syscalls.o
- .debug_macro   0x000181a7       0x94 src/syscalls.o
- .debug_macro   0x0001823b       0x57 src/syscalls.o
- .debug_macro   0x00018292      0x174 src/syscalls.o
- .debug_macro   0x00018406       0x10 src/syscalls.o
- .debug_macro   0x00018416       0x10 src/syscalls.o
- .debug_macro   0x00018426       0x10 src/syscalls.o
- .debug_macro   0x00018436       0x35 src/syscalls.o
- .debug_macro   0x0001846b      0x122 src/syscalls.o
- .debug_macro   0x0001858d       0x10 src/syscalls.o
- .debug_macro   0x0001859d      0x241 src/syscalls.o
- .debug_macro   0x000187de       0x1c src/syscalls.o
- .debug_macro   0x000187fa       0x10 src/syscalls.o
- .debug_macro   0x0001880a      0x189 src/syscalls.o
- .debug_macro   0x00018993       0x16 src/syscalls.o
- .debug_macro   0x000189a9       0x88 src/syscalls.o
- .debug_macro   0x00018a31      0x408 src/system_stm32f1xx.o
- .debug_macro   0x00018e39      0x406 src/ultrasounds.o
+ .debug_macro   0x00016e73      0x542 src/main.o
+ .debug_macro   0x000173b5       0x16 src/main.o
+ .debug_macro   0x000173cb       0x35 src/main.o
+ .debug_macro   0x00017400      0x1e1 src/main.o
+ .debug_macro   0x000175e1       0x16 src/main.o
+ .debug_macro   0x000175f7       0x16 src/main.o
+ .debug_macro   0x0001760d       0x29 src/main.o
+ .debug_macro   0x00017636      0x4c6 src/setups.o
+ .debug_macro   0x00017afc      0x40c src/stm32f1xx_it.o
+ .debug_macro   0x00017f08      0x243 src/syscalls.o
+ .debug_macro   0x0001814b       0x58 src/syscalls.o
+ .debug_macro   0x000181a3       0x94 src/syscalls.o
+ .debug_macro   0x00018237       0x57 src/syscalls.o
+ .debug_macro   0x0001828e      0x174 src/syscalls.o
+ .debug_macro   0x00018402       0x10 src/syscalls.o
+ .debug_macro   0x00018412       0x10 src/syscalls.o
+ .debug_macro   0x00018422       0x10 src/syscalls.o
+ .debug_macro   0x00018432       0x35 src/syscalls.o
+ .debug_macro   0x00018467      0x122 src/syscalls.o
+ .debug_macro   0x00018589       0x10 src/syscalls.o
+ .debug_macro   0x00018599      0x241 src/syscalls.o
+ .debug_macro   0x000187da       0x1c src/syscalls.o
+ .debug_macro   0x000187f6       0x10 src/syscalls.o
+ .debug_macro   0x00018806      0x189 src/syscalls.o
+ .debug_macro   0x0001898f       0x16 src/syscalls.o
+ .debug_macro   0x000189a5       0x88 src/syscalls.o
+ .debug_macro   0x00018a2d      0x408 src/system_stm32f1xx.o
+ .debug_macro   0x00018e35      0x406 src/ultrasounds.o
 
-.debug_line     0x00000000     0xb79a
+.debug_line     0x00000000     0xb8e3
  .debug_line    0x00000000      0xae1 HAL_Driver/Src/stm32f1xx_hal.o
  .debug_line    0x00000ae1      0xbcf HAL_Driver/Src/stm32f1xx_hal_cortex.o
  .debug_line    0x000016b0      0xb19 HAL_Driver/Src/stm32f1xx_hal_gpio.o
@@ -11745,15 +11746,15 @@ OUTPUT(AutonomousRobotProgram.elf elf32-littlearm)
  .debug_line    0x00004517      0xbcb HAL_Driver/Src/stm32f1xx_hal_rcc.o
  .debug_line    0x000050e2     0x18ab HAL_Driver/Src/stm32f1xx_hal_tim.o
  .debug_line    0x0000698d     0x11f2 HAL_Driver/Src/stm32f1xx_hal_uart.o
- .debug_line    0x00007b7f      0xf03 src/main.o
- .debug_line    0x00008a82      0xa02 src/setups.o
- .debug_line    0x00009484      0x96e src/stm32f1xx_it.o
- .debug_line    0x00009df2      0x5df src/syscalls.o
- .debug_line    0x0000a3d1      0x969 src/system_stm32f1xx.o
- .debug_line    0x0000ad3a      0x9e3 src/ultrasounds.o
- .debug_line    0x0000b71d       0x7d startup/startup_stm32f103xb.o
+ .debug_line    0x00007b7f      0xeef src/main.o
+ .debug_line    0x00008a6e      0xab5 src/setups.o
+ .debug_line    0x00009523      0x96e src/stm32f1xx_it.o
+ .debug_line    0x00009e91      0x5df src/syscalls.o
+ .debug_line    0x0000a470      0x969 src/system_stm32f1xx.o
+ .debug_line    0x0000add9      0xa8d src/ultrasounds.o
+ .debug_line    0x0000b866       0x7d startup/startup_stm32f103xb.o
 
-.debug_str      0x00000000    0x86321
+.debug_str      0x00000000    0x86228
  .debug_str     0x00000000    0x81087 HAL_Driver/Src/stm32f1xx_hal.o
                               0x81428 (size before relaxing)
  .debug_str     0x00081087      0x314 HAL_Driver/Src/stm32f1xx_hal_cortex.o
@@ -11770,19 +11771,19 @@ OUTPUT(AutonomousRobotProgram.elf elf32-littlearm)
                               0x81e83 (size before relaxing)
  .debug_str     0x000837ef      0x6a7 HAL_Driver/Src/stm32f1xx_hal_uart.o
                               0x8168b (size before relaxing)
- .debug_str     0x00083e96     0x10f6 src/main.o
-                              0x82706 (size before relaxing)
- .debug_str     0x00084f8c      0x111 src/setups.o
-                              0x81922 (size before relaxing)
- .debug_str     0x0008509d       0x38 src/stm32f1xx_it.o
+ .debug_str     0x00083e96     0x102a src/main.o
+                              0x82654 (size before relaxing)
+ .debug_str     0x00084ec0       0xdf src/setups.o
+                              0x8194a (size before relaxing)
+ .debug_str     0x00084f9f       0x38 src/stm32f1xx_it.o
                               0x80d6c (size before relaxing)
- .debug_str     0x000850d5     0x1109 src/syscalls.o
+ .debug_str     0x00084fd7     0x1109 src/syscalls.o
                                0x8583 (size before relaxing)
- .debug_str     0x000861de       0x61 src/system_stm32f1xx.o
+ .debug_str     0x000860e0       0x61 src/system_stm32f1xx.o
                               0x80e38 (size before relaxing)
- .debug_str     0x0008623f       0xb3 src/ultrasounds.o
-                              0x80e4a (size before relaxing)
- .debug_str     0x000862f2       0x2f startup/startup_stm32f103xb.o
+ .debug_str     0x00086141       0xb8 src/ultrasounds.o
+                              0x80e86 (size before relaxing)
+ .debug_str     0x000861f9       0x2f startup/startup_stm32f103xb.o
                                  0x65 (size before relaxing)
 
 .comment        0x00000000       0x7f

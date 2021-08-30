@@ -49,7 +49,7 @@ src/main.o: ../src/main.c \
  C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/HAL_Driver/Inc/stm32f1xx_ll_usb.h \
  C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h \
  C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/HAL_Driver/Inc/stm32f1xx_hal_hcd.h \
- ../src/setups.h ../src/ultrasounds.h ../src/board.c
+ ../src/setups.h ../src/ultrasounds.h
 
 C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPROGRAM/AutonomousRobotProgram/CMSIS/device/stm32f1xx.h:
 
@@ -154,5 +154,3 @@ C:/Users/piran/Desktop/PWSZajs/In퓓nierka/git/BACHELOR_THESIS/AUTONOMOUSROBOTPRO
 ../src/setups.h:
 
 ../src/ultrasounds.h:
-
-../src/board.c:
